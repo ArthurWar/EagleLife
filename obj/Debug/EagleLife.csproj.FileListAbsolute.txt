@@ -1,0 +1,10 @@
+D:\GitHub\eaglelife\obj\Debug\EagleLife.csprojAssemblyReference.cache
+D:\GitHub\eaglelife\obj\Debug\EagleLife.Properties.Resources.resources
+D:\GitHub\eaglelife\obj\Debug\EagleLife.csproj.GenerateResource.cache
+D:\GitHub\eaglelife\obj\Debug\EagleLife.csproj.CoreCompileInputs.cache
+D:\GitHub\eaglelife\bin\Debug\EagleLife.exe.config
+D:\GitHub\eaglelife\bin\Debug\EagleLife.exe
+D:\GitHub\eaglelife\bin\Debug\EagleLife.pdb
+D:\GitHub\eaglelife\obj\Debug\EagleLife.Main.resources
+D:\GitHub\eaglelife\obj\Debug\EagleLife.exe
+D:\GitHub\eaglelife\obj\Debug\EagleLife.pdb

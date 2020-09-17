@@ -75,6 +75,10 @@
     <Content Include="App_Data\EagleLifeLogin_log.ldf">
       <DependentUpon>EagleLifeLogin.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Data\YoungLifeDB.mdf" />
+    <Content Include="App_Data\YoungLifeDB_log.ldf">
+      <DependentUpon>YoungLifeDB.mdf</DependentUpon>
+    </Content>
     <Content Include="DataList.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Web.config" />

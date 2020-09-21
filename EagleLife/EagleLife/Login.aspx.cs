@@ -17,8 +17,11 @@ namespace EagleLife
             lblLoginError.Visible = false;
         }
 
+        
+
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            
             lblLoginError.Visible = false;
             if (txtUsername.Text != "" && txtPassword.Text != "")
             {
@@ -39,7 +42,7 @@ namespace EagleLife
                 else
                 {
                     lblLoginError.Visible = true;
-                    connection.Close();
+                    connection.Close(); 
                 }
             }
         }

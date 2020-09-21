@@ -12,9 +12,11 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form runat ="server" id="form1" >
+       
+    </form>
         <div>
-            <table style=""margin:auto">
+            <table style="height: 149px; width: 321px" >
                 <tr>
                     <td>
                         <asp:Label ID="Label1" runat="server" Text="Username:"></asp:Label></td>
@@ -38,11 +40,7 @@
                         <asp:Label ID="lblLoginError" runat="server" Text="Incorrect User Credentials" ForeColor="Red"></asp:Label>
                     </td>
                 </tr>
-            <br />
-            
-
-            <br />
+            </table>
         </div>
-    </form>
 </body>
 </html>

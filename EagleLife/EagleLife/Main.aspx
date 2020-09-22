@@ -26,14 +26,17 @@
             Phone #:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtUserPhone" runat="server"></asp:TextBox>
             <br />
+            <hr />
+            <br />
             Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtUserEmail" runat="server"></asp:TextBox>
+            &nbsp;<asp:Button ID="btnOpenEmail" runat="server" OnClick="btnOpenEmail_Click" Text="Email this user..." />
             <br />
             Main Group:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 &nbsp;<br />
             <br />
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Switch to List View..." />
+            <asp:Button ID="btnSwitchList" runat="server" OnClick="btnSwitchList_Click" Text="Switch to List View..." />
         </div>
     </form>
 </body>

@@ -12,11 +12,8 @@
     </style>
 </head>
 <body>
-    <form runat ="server" id="form1" >
-       
-    </form>
-        <div>
-            <table style="height: 149px; width: 321px" >
+    <form runat ="server" id="Login" >
+       <table style="height: 149px; width: 321px" >
                 <tr>
                     <td>
                         <asp:Label ID="Label1" runat="server" Text="Username:"></asp:Label></td>
@@ -41,6 +38,6 @@
                     </td>
                 </tr>
             </table>
-        </div>
+    </form>
 </body>
 </html>

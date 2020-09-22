@@ -16,9 +16,15 @@ namespace EagleLife
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btnSwitchList_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/DataList.aspx");
+        }
+
+        protected void btnOpenEmail_Click(object sender, EventArgs e)
+        {
+            string email = txtUserEmail.Text;
+            ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
         }
     }
 }

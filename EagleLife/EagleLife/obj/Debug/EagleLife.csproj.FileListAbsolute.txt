@@ -53,3 +53,4 @@ D:\GitHub\eaglelife\EagleLife\EagleLife\obj\Debug\EagleLife.csproj.CoreCompileIn
 D:\GitHub\eaglelife\EagleLife\EagleLife\obj\Debug\EagleLife.csproj.CopyComplete
 D:\GitHub\eaglelife\EagleLife\EagleLife\obj\Debug\EagleLife.dll
 D:\GitHub\eaglelife\EagleLife\EagleLife\obj\Debug\EagleLife.pdb
+D:\GitHub\eaglelife\EagleLife\EagleLife\obj\Debug\EagleLife.csprojAssemblyReference.cache

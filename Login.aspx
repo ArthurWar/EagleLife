@@ -13,7 +13,7 @@
 </head>
 <body>
     <form runat ="server" id="Login" >
-        <asp:Label ID="Label3" runat="server" Text="Young Life Admin Login" Font-Bold="true" Font-Size="XX-Large"></asp:Label>
+         <asp:Label ID="Label3" runat="server" Text="Young Life Admin Login" Font-Bold="true" Font-Size="XX-Large"></asp:Label>
        <table style="height: 149px; width: 321px" >
                 <tr>
                     <td>

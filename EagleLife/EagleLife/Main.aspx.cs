@@ -26,5 +26,10 @@ namespace EagleLife
             string email = txtUserEmail.Text;
             ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
         }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

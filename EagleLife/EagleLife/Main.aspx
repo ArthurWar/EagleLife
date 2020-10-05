@@ -13,7 +13,8 @@
             <br />
             <br />
             ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtUserID" runat="server"></asp:TextBox>
-&nbsp;<asp:Button ID="btnSearch" runat="server" Text="Search" />
+&nbsp;<asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
+            <asp:Label ID="lblSearch" runat="server"></asp:Label>
             <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Image ID="Image1" runat="server" Height="128px" Width="128px" />

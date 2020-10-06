@@ -165,3 +165,4 @@ C:\Users\Davis\Documents\GitHub\eaglelife\EagleLife\EagleLife\obj\Debug\EagleLif
 C:\Users\Davis\Documents\GitHub\eaglelife\EagleLife\EagleLife\obj\Debug\EagleLife.csproj.CopyComplete
 C:\Users\Davis\Documents\GitHub\eaglelife\EagleLife\EagleLife\obj\Debug\EagleLife.dll
 C:\Users\Davis\Documents\GitHub\eaglelife\EagleLife\EagleLife\obj\Debug\EagleLife.pdb
+D:\GitHub\eaglelife\EagleLife\EagleLife\obj\Debug\EagleLife.csprojAssemblyReference.cache

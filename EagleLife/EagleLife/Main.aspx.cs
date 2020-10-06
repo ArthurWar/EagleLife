@@ -32,9 +32,9 @@ namespace EagleLife
         {
             if (txtUserID.Text != "")
             {
-                string connStr = ConfigurationManager.ConnectionStrings["YoungLifeDB.mdf"].ConnectionString;
+                string connStr = ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString;
                 SqlConnection conn = new SqlConnection(connStr);
-                string SQLStr = "Select StEmail, StPhone, StGroupCode, StSchool From Student Where StName = @StName";
+                string SQLStr = "Select StID, StName, StPhone, StEmail From Student Where StID = @StID";
                 SqlCommand comm = new SqlCommand(SQLStr, conn);
                 try
                 {
@@ -44,8 +44,7 @@ namespace EagleLife
                     {
                         txtUserName.Text = reader["StName"].ToString();
                         txtUserPhone.Text = reader["StPhone"].ToString();
-                        txtUserEmail.Text = reader["StEmail"].ToString();
-                        txtUserArea.Text = reader["StSchool"].ToString();
+                        txtUserEmail.Text = reader["StEmail"].ToString();                  
                     }
                     else
                     {

@@ -35,9 +35,13 @@
                         <asp:TextBox ID="txtPassword" AutoComplete="off" runat="server"></asp:TextBox></td>
                 </tr>
                 <tr>
-                    <td>&nbsp;</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <asp:CheckBox ID="chkrmb" runat="server" OnCheckedChanged="chkrmb_CheckedChanged" Text="Remember me!" />
+                    </td>
                     <td class="auto-style1">
-                        <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" /></td>
+                    <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
+                        <br />
+                    </td>
                 </tr>
                 <tr>
                     <td>

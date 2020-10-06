@@ -18,12 +18,23 @@ namespace EagleLife
         {
             lblLoginError.Visible = false;
             lblDatafill.Visible = false;
+            if(!IsPostBack)
+            {
+                if (Request.Cookies["adminUsername"] != null)
+                    txtUsername.Text = Request.Cookies["adminUsername"].Value;
+                
+            }
+        }
+        protected void chkrmb_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             string User = txtUsername.Text;
             string Pass = txtPassword.Text;
+
 
             if (txtPassword.Text != "" && txtPassword.Text != "" )
             {
@@ -40,8 +51,18 @@ namespace EagleLife
                 
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
                
-                if (count == 1)  
+                if (count == 1)               
                 {
+                    if(chkrmb.Checked == true)
+                    {
+                        Response.Cookies["adminUsername"].Value = txtUsername.Text;
+
+                        Response.Cookies["adminUsername"].Expires = DateTime.Now.AddDays(7);
+                    }
+                    else
+                    {
+                        Response.Cookies["adminUsername"].Expires = DateTime.Now.AddDays(-1);
+                    }
                     connect.Close();                
                     Session["adminUsername"] = txtUsername.Text.Trim();
                     Session["adminPassword"] = txtPassword.Text.Trim();
@@ -59,5 +80,7 @@ namespace EagleLife
                 
             }
         }
+
+      
     }
     }

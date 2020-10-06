@@ -17,49 +17,46 @@ namespace EagleLife
         protected void Page_Load(object sender, EventArgs e)
         {
             lblLoginError.Visible = false;
+            lblDatafill.Visible = false;
         }
-
-        
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtPassword.Text != "" && txtPassword.Text != "")
+            string User = txtUsername.Text;
+            string Pass = txtPassword.Text;
+
+            if (txtPassword.Text != "" && txtPassword.Text != "" )
             {
-                string ConnectionString;
-                ConnectionString = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename= D:\\GitHub\\eaglelife\\EagleLifeDB.mdf; User Instance=true";
 
-                string strSel = "SELECT COUNT(*) FROM Users WHERE UserName = @Username AND Password  = @Password";
+                SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectStr"].ConnectionString);
+                connect.Open();
+                string checkuserpass = "Select adminID, adminUsername, adminPassword " +
+                                     "From AdminLogin where adminUsername = @adminUsername AND adminPassword = @adminPassword ";
 
-                SqlConnection con = new SqlConnection(ConnectionString);
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = strSel;
+                SqlCommand cmd = new SqlCommand(checkuserpass, connect);
 
-                SqlParameter user = new SqlParameter("@Username", SqlDbType.VarChar, 50);
-                user.Value = txtUsername.Text.Trim().ToString();
-                cmd.Parameters.Add(user);
-
-                SqlParameter pass = new SqlParameter("@Password", SqlDbType.VarChar, 50);
-                pass.Value = txtPassword.Text.Trim().ToString();
-                cmd.Parameters.Add(pass);
-
-                con.Open();
-                SqlDataAdapter du = new SqlDataAdapter("Select adminUsername from AdminLogin where adminUsername ='" + txtUsername.Text + "'", con);
-                SqlDataAdapter dp = new SqlDataAdapter("Select adminPassword from AdminLogin where adminPassword ='" + txtPassword.Text + "'", con);
-                if ( )
+                cmd.Parameters.AddWithValue("@adminUsername", User);
+                cmd.Parameters.AddWithValue("@adminPassword", Pass);
+                
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+               
+                if (count == 1)  
                 {
-
+                    connect.Close();                
+                    Session["adminUsername"] = txtUsername.Text.Trim();
+                    Session["adminPassword"] = txtPassword.Text.Trim();
+                    Response.Redirect("Initial.aspx");
                 }
 
                 else
                 {
-                    Response.Redirect("Initial.aspx");
+                    lblLoginError.Visible = true;
                 }
             }
             else
             {
-                lblLoginError.Visible = true;
+                lblDatafill.Visible = true;
+                
             }
         }
     }

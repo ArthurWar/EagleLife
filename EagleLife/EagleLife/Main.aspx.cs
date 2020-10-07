@@ -30,12 +30,14 @@ namespace EagleLife
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            lblSearch.Text = "";
             if (txtUserID.Text != "")
             {
                 string connStr = ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString;
                 SqlConnection conn = new SqlConnection(connStr);
                 string SQLStr = "Select StID, StName, StPhone, StEmail From Student Where StID = @StID";
                 SqlCommand comm = new SqlCommand(SQLStr, conn);
+                comm.Parameters.AddWithValue("StID", txtUserID.Text);
                 try
                 {
                     conn.Open();

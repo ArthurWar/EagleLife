@@ -13,27 +13,29 @@
             <br />
             <br />
             ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtUserID" runat="server"></asp:TextBox>
-&nbsp;<asp:Button ID="btnSearch" runat="server" Text="Search" />
+&nbsp;<asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
+            <asp:Label ID="lblSearch" runat="server"></asp:Label>
             <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Image ID="Image1" runat="server" Height="128px" Width="128px" />
+            <asp:CheckBox ID="userHasGroup" runat="server" Visible="False" />
             <br />
-            Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtUserName" runat="server"></asp:TextBox>
+            Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtUserName" runat="server" Enabled="False"></asp:TextBox>
             <br />
-            Area:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtUserArea" runat="server"></asp:TextBox>
+            School:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="txtUserSchool" runat="server" Enabled="False"></asp:TextBox>
             <br />
             Phone #:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtUserPhone" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtUserPhone" runat="server" Enabled="False"></asp:TextBox>
             <br />
             <hr />
             <br />
             Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="txtUserEmail" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtUserEmail" runat="server" Enabled="False"></asp:TextBox>
             &nbsp;<asp:Button ID="btnOpenEmail" runat="server" OnClick="btnOpenEmail_Click" Text="Email this user..." />
             <br />
             Main Group:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtUserGroup" runat="server" Enabled="False"></asp:TextBox>
 &nbsp;<br />
             <br />
             <asp:Button ID="btnSwitchList" runat="server" OnClick="btnSwitchList_Click" Text="Switch to List View..." />

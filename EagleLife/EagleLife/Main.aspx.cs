@@ -35,7 +35,7 @@ namespace EagleLife
             {
                 string connStr = ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString;
                 SqlConnection conn = new SqlConnection(connStr);
-                string SQLStr = "Select StID, StName, StPhone, StEmail From Student Where StID = @StID";
+                string SQLStr = "Select StID, StName, StPhone, StEmail, StSchool, StHasGroup, StGroupCode From Student Where StID = @StID";
                 SqlCommand comm = new SqlCommand(SQLStr, conn);
                 comm.Parameters.AddWithValue("StID", txtUserID.Text);
                 try
@@ -46,7 +46,17 @@ namespace EagleLife
                     {
                         txtUserName.Text = reader["StName"].ToString();
                         txtUserPhone.Text = reader["StPhone"].ToString();
-                        txtUserEmail.Text = reader["StEmail"].ToString();                  
+                        txtUserEmail.Text = reader["StEmail"].ToString();
+                        txtUserSchool.Text = reader["StSchool"].ToString();
+                        userHasGroup.Checked = Convert.ToBoolean(reader["StHasGroup"]);
+                        if (userHasGroup.Checked == true)
+                        {
+                            txtUserGroup.Text = reader["StGroupCode"].ToString();
+                        }
+                        else
+                        {
+                            txtUserGroup.Text = "User has no group.";
+                        }
                     }
                     else
                     {

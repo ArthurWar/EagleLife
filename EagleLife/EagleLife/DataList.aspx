@@ -50,9 +50,9 @@
                 </ItemTemplate>
                 <SelectedItemStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
             </asp:DataList>
-            <asp:SqlDataSource ID="EagleLifeDB" runat="server" ConnectionString="<%$ ConnectionStrings:EagleLifeDBConnectionString %>" SelectCommand="SELECT * FROM [Student]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="EagleLifeDB" runat="server" ConnectionString="<%$ ConnectionStrings:EagleLifeDBConnectionString %>" SelectCommand="SELECT * FROM [Student]" OnSelecting="EagleLifeDB_Selecting"></asp:SqlDataSource>
             <br />
-            <asp:Button ID="btnSaveFile" runat="server" Text="Save list to file..." />
+            <asp:Button ID="btnSaveFile" runat="server" Text="Save list to file..." OnClick="btnSaveFile_Click1" />
             <br />
             <br />
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Switch to Search View..." />

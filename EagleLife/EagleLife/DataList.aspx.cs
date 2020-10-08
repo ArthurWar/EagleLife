@@ -6,17 +6,20 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 using System.Text;
 
 namespace EagleLife
 {
     public partial class DataList : System.Web.UI.Page
     {
+
+        private char csv;
         private object dataList;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -61,10 +64,75 @@ namespace EagleLife
             builder.Append(string.Join("\n", rows.ToArray()));
 
             Response.Clear();
-            Response.ContentType = "text/csv";
+            Response.Buffer = true;
             Response.AddHeader("Content-Disposition", "attachment;filename=myfilename.csv");
-            Response.Write(builder.ToString());
+            Response.Charset = "";
+            Response.ContentType = "text/csv";
+            Response.Output.Write(builder.ToString());
+            Response.Flush();
             Response.End();
+            //-------------------------------------------------------------
+            //string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+            //using (SqlConnection con = new SqlConnection(constr))
+            //{
+            //    using (SqlCommand cmd = new SqlCommand("SELECT * FROM Student"))
+            //    {
+            //        using (SqlDataAdapter sda = new SqlDataAdapter())
+            //        {
+            //            cmd.Connection = con;
+            //            sda.SelectCommand = cmd;
+            //            using (DataTable dt = new DataTable())
+            //            {
+            //                sda.Fill(dt);
+
+            //                //Build the CSV file data as a Comma separated string.
+            //                string csv = string.Empty;
+
+            //                foreach (DataColumn column in dt.Columns)
+            //                {
+            //                    //Add the Header row for CSV file.
+            //                    csv += column.ColumnName + ',';
+            //                }
+
+            //                //Add new line.
+            //                csv += "\r\n";
+
+            //                foreach (DataRow row in dt.Rows)
+            //                {
+            //                    foreach (DataColumn column in dt.Columns)
+            //                    {
+            //                        //Add the Data rows.
+            //                        csv += row[column.ColumnName].ToString().Replace(",", ";") + ',';
+            //                    }
+
+            //                    //Add new line.
+            //                    csv += "\r\n";
+            //                }
+
+            //                //Download the CSV file.
+            //                Response.Clear();
+            //                Response.Buffer = true;
+            //                Response.AddHeader("content-disposition", "attachment;filename=SqlExport.csv");
+            //                Response.Charset = "";
+            //                Response.ContentType = "application/text";
+            //                Response.Output.Write(csv);
+            //                Response.Flush();
+            //                Response.End();
+            //            }
+            //        }
+            //    }
+            //    }
+            //}
+
+            //protected void btnSaveFile_Click1(object sender, EventArgs e)
+            //{
+
+            //}
+
+            //protected void EagleLifeDB_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+            //{
+
+            //}
         }
 
         private object GetData(object dataList)

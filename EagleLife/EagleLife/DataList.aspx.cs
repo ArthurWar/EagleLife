@@ -21,7 +21,7 @@ namespace EagleLife
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Main.aspx");
+            Response.Redirect("~/Default.aspx");
         }
 
         protected void btnSaveFile_Click(object sender, EventArgs e)

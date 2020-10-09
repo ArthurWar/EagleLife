@@ -16,30 +16,41 @@
         <div>
             <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="XX-Large" Font-Underline="True" Text="User Database"></asp:Label>
             <br />
-            <asp:DataList ID="DataList1" runat="server" CssClass="auto-style1" DataKeyField="userID" DataSourceID="EagleLifeDB" Width="289px">
+            <asp:DataList ID="DataList1" runat="server" CssClass="auto-style1" DataKeyField="StID" DataSourceID="EagleLifeDB" Width="289px" CellPadding="4" ForeColor="#333333">
+                <AlternatingItemStyle BackColor="White" ForeColor="#284775" />
+                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <ItemStyle BackColor="#F7F6F3" ForeColor="#333333" />
                 <ItemTemplate>
-                    userID:
-                    <asp:Label ID="userIDLabel" runat="server" Text='<%# Eval("userID") %>' />
+                    StID:
+                    <asp:Label ID="StIDLabel" runat="server" Text='<%# Eval("StID") %>' />
                     <br />
-                    userName:
-                    <asp:Label ID="userNameLabel" runat="server" Text='<%# Eval("userName") %>' />
+                    StName:
+                    <asp:Label ID="StNameLabel" runat="server" Text='<%# Eval("StName") %>' />
                     <br />
-                    userArea:
-                    <asp:Label ID="userAreaLabel" runat="server" Text='<%# Eval("userArea") %>' />
+                    StEmail:
+                    <asp:Label ID="StEmailLabel" runat="server" Text='<%# Eval("StEmail") %>' />
                     <br />
-                    userPhone:
-                    <asp:Label ID="userPhoneLabel" runat="server" Text='<%# Eval("userPhone") %>' />
+                    StPhone:
+                    <asp:Label ID="StPhoneLabel" runat="server" Text='<%# Eval("StPhone") %>' />
                     <br />
-                    userEmail:
-                    <asp:Label ID="userEmailLabel" runat="server" Text='<%# Eval("userEmail") %>' />
+                    StLeader:
+                    <asp:Label ID="StLeaderLabel" runat="server" Text='<%# Eval("StLeader") %>' />
                     <br />
-                    userGroupCode:
-                    <asp:Label ID="userGroupCodeLabel" runat="server" Text='<%# Eval("userGroupCode") %>' />
+                    StSchool:
+                    <asp:Label ID="StSchoolLabel" runat="server" Text='<%# Eval("StSchool") %>' />
                     <br />
-<br />
+                    StHasGroup:
+                    <asp:Label ID="StHasGroupLabel" runat="server" Text='<%# Eval("StHasGroup") %>' />
+                    <br />
+                    StGroupCode:
+                    <asp:Label ID="StGroupCodeLabel" runat="server" Text='<%# Eval("StGroupCode") %>' />
+                    <br />
+                    <br />
                 </ItemTemplate>
+                <SelectedItemStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
             </asp:DataList>
-            <asp:SqlDataSource ID="EagleLifeDB" runat="server" ConnectionString="<%$ ConnectionStrings:EagleLifeDBConnectionString %>" SelectCommand="SELECT * FROM [ELUser]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="EagleLifeDB" runat="server" ConnectionString="<%$ ConnectionStrings:EagleLifeDBConnectionString %>" SelectCommand="SELECT * FROM [Student]"></asp:SqlDataSource>
             <br />
             <asp:Button ID="btnSaveFile" runat="server" Text="Save list to file..." />
             <br />

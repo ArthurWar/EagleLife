@@ -7,8 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
-using System.Security.Cryptography.X509Certificates;
-using System.EnterpriseServices;
+using System.Web.Caching;
 
 namespace EagleLife
 {
@@ -17,50 +16,80 @@ namespace EagleLife
         protected void Page_Load(object sender, EventArgs e)
         {
             lblLoginError.Visible = false;
+            lblDatafill.Visible = false;
+            if (!IsPostBack)
+            {
+                if (Request.Cookies["AdminUser"] != null)
+                    txtUsername.Text = Request.Cookies["AdminUser"].Value;
+            }
         }
 
-        
+        protected void chkRmb_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtPassword.Text != "" && txtPassword.Text != "")
+            string user = txtUsername.Text;
+
+            string pass = txtPassword.Text;
+
+
+            if (txtUsername.Text != "" && txtPassword.Text != "")
             {
-                string ConnectionString;
-                ConnectionString = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename= D:\\GitHub\\eaglelife\\EagleLifeDB.mdf; User Instance=true";
-
-                string strSel = "SELECT COUNT(*) FROM Users WHERE UserName = @Username AND Password  = @Password";
-
-                SqlConnection con = new SqlConnection(ConnectionString);
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = con;
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = strSel;
-
-                SqlParameter user = new SqlParameter("@Username", SqlDbType.VarChar, 50);
-                user.Value = txtUsername.Text.Trim().ToString();
-                cmd.Parameters.Add(user);
-
-                SqlParameter pass = new SqlParameter("@Password", SqlDbType.VarChar, 50);
-                pass.Value = txtPassword.Text.Trim().ToString();
-                cmd.Parameters.Add(pass);
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString);
 
                 con.Open();
-                SqlDataAdapter du = new SqlDataAdapter("Select adminUsername from AdminLogin where adminUsername ='" + txtUsername.Text + "'", con);
-                SqlDataAdapter dp = new SqlDataAdapter("Select adminPassword from AdminLogin where adminPassword ='" + txtPassword.Text + "'", con);
-                if ( )
+
+                string checkuserpass =  "Select AdminId, AdminUser, AdminPass " +
+                    "From AdminLogin where AdminUser = @AdminUser AND AdminPass = @AdminPass ";
+
+                SqlCommand cmd = new SqlCommand(checkuserpass, con);
+
+                cmd.Parameters.AddWithValue("@AdminUser", user);
+                cmd.Parameters.AddWithValue("@AdminPass", pass);
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                if(count == 1)
                 {
-
+                    if(chkRmb.Checked == true)
+                    {
+                        Response.Cookies["AdminUser"].Value = txtUsername.Text;
+                        Response.Cookies["AdminUser"].Expires = DateTime.Now.AddDays(7);
+                    }
+                    else
+                    {
+                        Response.Cookies["AdminUser"].Expires = DateTime.Now.AddDays(-1);
+                    }
+                    con.Close();
+                    Session["AdminUser"] = txtUsername.Text.Trim();
+                    Session["AdminPass"] = txtPassword.Text.Trim();
+                    Response.Redirect("Initial.aspx");
                 }
-
                 else
                 {
-                    Response.Redirect("Initial.aspx");
+                    lblLoginError.Visible = true;
                 }
             }
             else
             {
-                lblLoginError.Visible = true;
+                lblDatafill.Visible = true;
+
             }
+
+        }
+
+        protected void ForgotLnk_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("PasswordForgot.aspx");
+        }
+
+        protected void ChangeLnk_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("PassWordChange.aspx");
         }
     }
-    }
+}

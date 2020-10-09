@@ -84,6 +84,7 @@
     <Content Include="Web.config" />
     <Content Include="Main.aspx" />
     <Content Include="Initial.aspx" />
+    <Content Include="AddModify.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
@@ -115,6 +116,13 @@
     </Compile>
     <Compile Include="Initial.aspx.designer.cs">
       <DependentUpon>Initial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddModify.aspx.cs">
+      <DependentUpon>AddModify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddModify.aspx.designer.cs">
+      <DependentUpon>AddModify.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

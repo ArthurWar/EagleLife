@@ -7,11 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EagleLife {
-    
-    
-    public partial class Login {
-        
+namespace EagleLife
+{
+
+
+    public partial class Login
+    {
+
+        /// <summary>
+        /// Label3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label3;
+
         /// <summary>
         /// Label1 control.
         /// </summary>
@@ -20,7 +31,7 @@ namespace EagleLife {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-        
+
         /// <summary>
         /// txtUsername control.
         /// </summary>
@@ -29,7 +40,7 @@ namespace EagleLife {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUsername;
-        
+
         /// <summary>
         /// Label2 control.
         /// </summary>
@@ -38,7 +49,7 @@ namespace EagleLife {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
-        
+
         /// <summary>
         /// txtPassword control.
         /// </summary>
@@ -47,7 +58,7 @@ namespace EagleLife {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
-        
+
         /// <summary>
         /// btnLogin control.
         /// </summary>
@@ -56,7 +67,7 @@ namespace EagleLife {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLogin;
-        
+
         /// <summary>
         /// lblLoginError control.
         /// </summary>

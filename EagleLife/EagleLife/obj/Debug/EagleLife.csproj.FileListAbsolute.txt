@@ -224,4 +224,7 @@ C:\Users\Sarah\Documents\GitHub\EagleLife\EagleLife\EagleLife\obj\Debug\EagleLif
 C:\Users\Sarah\Documents\GitHub\EagleLife\EagleLife\EagleLife\obj\Debug\EagleLife.dll
 C:\Users\Sarah\Documents\GitHub\EagleLife\EagleLife\EagleLife\obj\Debug\EagleLife.pdb
 D:\GitHub\eaglelife\EagleLife\EagleLife\obj\Debug\EagleLife.csprojAssemblyReference.cache
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

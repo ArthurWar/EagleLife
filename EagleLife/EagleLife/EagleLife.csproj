@@ -75,14 +75,10 @@
     <Content Include="App_Data\EagleLifeLogin_log.ldf">
       <DependentUpon>EagleLifeLogin.mdf</DependentUpon>
     </Content>
-    <Content Include="App_Data\YoungLifeDB.mdf" />
-    <Content Include="App_Data\YoungLifeDB_log.ldf">
-      <DependentUpon>YoungLifeDB.mdf</DependentUpon>
-    </Content>
     <Content Include="DataList.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Web.config" />
-    <Content Include="Main.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="Initial.aspx" />
     <Content Include="AddModify.aspx" />
   </ItemGroup>
@@ -103,12 +99,12 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Main.aspx.cs">
-      <DependentUpon>Main.aspx</DependentUpon>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Main.aspx.designer.cs">
-      <DependentUpon>Main.aspx</DependentUpon>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Initial.aspx.cs">
       <DependentUpon>Initial.aspx</DependentUpon>

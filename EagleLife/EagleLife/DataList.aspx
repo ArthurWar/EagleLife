@@ -9,14 +9,23 @@
         .auto-style1 {
             margin-right: 0px;
         }
+        .auto-style3 {
+            width: 750px;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div style="vertical-align:middle; text-align: center;">
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/title_small.png" />
+            <br />
             <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="XX-Large" Font-Underline="True" Text="User Database"></asp:Label>
             <br />
-            <asp:DataList ID="DataList1" runat="server" CssClass="auto-style1" DataKeyField="StID" DataSourceID="EagleLifeDB" Width="289px" CellPadding="4" ForeColor="#333333">
+            <div style="text-align: left;">
+                <table align="center" width="30%">
+                    <tr>
+                        <td class="auto-style3">
+            <asp:DataList ID="DataList1" runat="server" CssClass="auto-style1" DataKeyField="StID" DataSourceID="EagleLifeDB" Width="100%" CellPadding="4" ForeColor="#333333" RepeatColumns="1">
                 <AlternatingItemStyle BackColor="White" ForeColor="#284775" />
                 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                 <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -50,6 +59,10 @@
                 </ItemTemplate>
                 <SelectedItemStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
             </asp:DataList>
+                        </td>
+                    </tr>
+                </table>
+            </div>
             <asp:SqlDataSource ID="EagleLifeDB" runat="server" ConnectionString="<%$ ConnectionStrings:EagleLifeDBConnectionString %>" SelectCommand="SELECT * FROM [Student]"></asp:SqlDataSource>
             <br />
             <asp:Button ID="btnSaveFile" runat="server" Text="Save list to file..." />

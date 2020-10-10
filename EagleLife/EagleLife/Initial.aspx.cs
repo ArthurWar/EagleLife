@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace EagleLife
 {
-    public partial class WebForm2 : System.Web.UI.Page
+    public partial class Initial : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -16,7 +16,7 @@ namespace EagleLife
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Main.aspx");
+            Response.Redirect("~/Default.aspx");
         }
     }
 }

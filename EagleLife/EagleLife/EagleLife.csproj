@@ -75,15 +75,26 @@
     <Content Include="App_Data\EagleLifeLogin_log.ldf">
       <DependentUpon>EagleLifeLogin.mdf</DependentUpon>
     </Content>
+    <Content Include="AddModify.aspx" />
+    <Content Include="Images\profile_nophoto.png" />
+    <Content Include="Images\profile_nouser.png" />
+    <Content Include="Images\title_large.png" />
+    <Content Include="Images\title_small.png" />
     <Content Include="DataList.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
     <Content Include="Initial.aspx" />
-    <Content Include="AddModify.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AddModify.aspx.cs">
+      <DependentUpon>AddModify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddModify.aspx.designer.cs">
+      <DependentUpon>AddModify.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Search.cs" />
     <Compile Include="DataList.aspx.cs">
       <DependentUpon>DataList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -112,13 +123,6 @@
     </Compile>
     <Compile Include="Initial.aspx.designer.cs">
       <DependentUpon>Initial.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AddModify.aspx.cs">
-      <DependentUpon>AddModify.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AddModify.aspx.designer.cs">
-      <DependentUpon>AddModify.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

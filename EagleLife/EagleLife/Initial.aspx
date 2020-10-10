@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Initial.aspx.cs" Inherits="EagleLife.WebForm2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Initial.aspx.cs" Inherits="EagleLife.Initial" %>
 
 <!DOCTYPE html>
 
@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div style="vertical-align:middle; text-align: center;">
-            <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="XX-Large" Font-Underline="True" Text="EagleLife" Font-Italic="True"></asp:Label>
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/title_large.png" />
             <br />
             <br />
             Developed by Eagle Eye Consultation<br />

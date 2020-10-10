@@ -5,7 +5,7 @@ using System.Web;
 
 namespace EagleLife
 {
-    public class Class1
+    public class Search
     {
     }
 }

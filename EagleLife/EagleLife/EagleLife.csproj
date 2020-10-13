@@ -94,7 +94,6 @@
     <Compile Include="AddModify.aspx.designer.cs">
       <DependentUpon>AddModify.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Search.cs" />
     <Compile Include="DataList.aspx.cs">
       <DependentUpon>DataList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

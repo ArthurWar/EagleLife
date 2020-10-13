@@ -7,8 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
-using System.Security.Cryptography.X509Certificates;
-using System.EnterpriseServices;
+using System.Web.Caching;
 
 namespace EagleLife
 {
@@ -18,57 +17,58 @@ namespace EagleLife
         {
             lblLoginError.Visible = false;
             lblDatafill.Visible = false;
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-                if (Request.Cookies["adminUsername"] != null)
-                    txtUsername.Text = Request.Cookies["adminUsername"].Value;
-                
+                if (Request.Cookies["AdminUser"] != null)
+                    txtUsername.Text = Request.Cookies["AdminUser"].Value;
             }
         }
-        protected void chkrmb_CheckedChanged(object sender, EventArgs e)
+
+        protected void chkRmb_CheckedChanged(object sender, EventArgs e)
         {
 
         }
+
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string User = txtUsername.Text;
-            string Pass = txtPassword.Text;
+            string user = txtUsername.Text;
+
+            string pass = txtPassword.Text;
 
 
-            if (txtPassword.Text != "" && txtPassword.Text != "" )
+            if (txtUsername.Text != "" && txtPassword.Text != "")
             {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString);
 
-                SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectStr"].ConnectionString);
-                connect.Open();
-                string checkuserpass = "Select adminID, adminUsername, adminPassword " +
-                                     "From AdminLogin where adminUsername = @adminUsername AND adminPassword = @adminPassword ";
+                con.Open();
 
-                SqlCommand cmd = new SqlCommand(checkuserpass, connect);
+                string checkuserpass =  "Select AdminId, AdminUser, AdminPass " +
+                    "From AdminLogin where AdminUser = @AdminUser AND AdminPass = @AdminPass ";
 
-                cmd.Parameters.AddWithValue("@adminUsername", User);
-                cmd.Parameters.AddWithValue("@adminPassword", Pass);
-                
+                SqlCommand cmd = new SqlCommand(checkuserpass, con);
+
+                cmd.Parameters.AddWithValue("@AdminUser", user);
+                cmd.Parameters.AddWithValue("@AdminPass", pass);
+
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
-               
-                if (count == 1)               
-                {
-                    if(chkrmb.Checked == true)
-                    {
-                        Response.Cookies["adminUsername"].Value = txtUsername.Text;
 
-                        Response.Cookies["adminUsername"].Expires = DateTime.Now.AddDays(7);
+                if(count == 1)
+                {
+                    if(chkRmb.Checked == true)
+                    {
+                        Response.Cookies["AdminUser"].Value = txtUsername.Text;
+                        Response.Cookies["AdminUser"].Expires = DateTime.Now.AddDays(7);
                     }
                     else
                     {
-                        Response.Cookies["adminUsername"].Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies["AdminUser"].Expires = DateTime.Now.AddDays(-1);
                     }
-                    connect.Close();                
-                    Session["adminUsername"] = txtUsername.Text.Trim();
-                    Session["adminPassword"] = txtPassword.Text.Trim();
+                    con.Close();
+                    Session["AdminUser"] = txtUsername.Text.Trim();
+                    Session["AdminPass"] = txtPassword.Text.Trim();
                     Response.Redirect("Initial.aspx");
                 }
-
                 else
                 {
                     lblLoginError.Visible = true;
@@ -77,10 +77,19 @@ namespace EagleLife
             else
             {
                 lblDatafill.Visible = true;
-                
+
             }
+
         }
 
-      
+        protected void ForgotLnk_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("PasswordForgot.aspx");
+        }
+
+        protected void ChangeLnk_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("PassWordChange.aspx");
+        }
     }
-    }
+}

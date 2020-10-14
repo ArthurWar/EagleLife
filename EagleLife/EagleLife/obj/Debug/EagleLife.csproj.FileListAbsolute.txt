@@ -110,3 +110,7 @@ C:\Users\Sarah\Documents\GitHub\EagleLife\EagleLife\EagleLife\obj\Debug\EagleLif
 C:\Users\Sarah\Documents\GitHub\EagleLife\EagleLife\EagleLife\obj\Debug\EagleLife.csproj.CopyComplete
 C:\Users\Sarah\Documents\GitHub\EagleLife\EagleLife\EagleLife\obj\Debug\EagleLife.dll
 C:\Users\Sarah\Documents\GitHub\EagleLife\EagleLife\EagleLife\obj\Debug\EagleLife.pdb
+C:\Users\Sarah\Documents\GitHub\EagleLife\EagleLife\EagleLife\bin\EntityFramework.dll
+C:\Users\Sarah\Documents\GitHub\EagleLife\EagleLife\EagleLife\bin\EntityFramework.SqlServer.dll
+C:\Users\Sarah\Documents\GitHub\EagleLife\EagleLife\EagleLife\bin\EntityFramework.xml
+C:\Users\Sarah\Documents\GitHub\EagleLife\EagleLife\EagleLife\bin\EntityFramework.SqlServer.xml

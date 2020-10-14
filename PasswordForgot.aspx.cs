@@ -18,5 +18,10 @@ namespace EagleLife
         {
 
         }
+
+        protected void btmBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
+        }
     }
 }

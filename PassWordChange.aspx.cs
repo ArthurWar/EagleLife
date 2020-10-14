@@ -39,7 +39,7 @@ namespace EagleLife
                 using(SqlConnection con = new SqlConnection(constr))
                 {
                     using(SqlCommand cmd = new SqlCommand(query))
-                    {
+                    { 
                         using (SqlDataAdapter sda = new SqlDataAdapter())
                         {
                             cmd.Parameters.AddWithValue("@AdminUser", this.Page.User.Identity.Name);

@@ -11,7 +11,9 @@
         <div style="vertical-align:middle; text-align: center;">
             <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/title_small.png" />
             <br />
-            <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="XX-Large" Font-Underline="True" Text="User Database"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="XX-Large" Font-Underline="True" Text="Student Database"></asp:Label>
+            &nbsp;<br />
+            <asp:Button ID="btnSaveStudentFile" runat="server" Text="Save list to file..." OnClick="btnSaveFile_Click" />
             <br />
             <div style="text-align: left;">
                 <table align="center" width="75%">
@@ -28,14 +30,34 @@
                     <asp:BoundField DataField="StGroupCode" HeaderText="Group Code" SortExpression="StGroupCode" />
                 </Columns>
             </asp:GridView>
+            <asp:SqlDataSource ID="EagleLifeDB" runat="server" ConnectionString="<%$ ConnectionStrings:EagleLifeDBConnectionString %>" SelectCommand="SELECT [StID], [StName], [StEmail], [StPhone], [StLeader], [StSchool], [StGroupCode] FROM [Student]"></asp:SqlDataSource>
+                            </td>
+                    </tr>
+                </table>
+                <br />
+            <br />
+            <div style="vertical-align:middle; text-align: center;">
+                <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="XX-Large" Font-Underline="True" Text="Leader Database"></asp:Label>
+                <br />
+                <asp:Button ID="btnSaveLeaderFile" runat="server" Text="Save list to file..." OnClick="btnSaveLeaderFile_Click" />
+                <table align="center" width="75%">
+                    <tr>
+                        <td class="auto-style3">
+            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="LID" DataSourceID="EagleLifeDBLeaders" Width="100%" AllowPaging="True" AllowSorting="True">
+                <Columns>
+                    <asp:BoundField DataField="LID" HeaderText="ID" ReadOnly="True" SortExpression="LID" />
+                    <asp:BoundField DataField="LName" HeaderText="Name" SortExpression="LName" />
+                    <asp:BoundField DataField="LEmail" HeaderText="Email" SortExpression="LEmail" />
+                    <asp:BoundField DataField="LPhone" HeaderText="Phone" SortExpression="LPhone" />
+                    <asp:BoundField DataField="ScID" HeaderText="School ID" SortExpression="ScID" />
+                </Columns>
+            </asp:GridView>
+                            <asp:SqlDataSource ID="EagleLifeDBLeaders" runat="server" ConnectionString="<%$ ConnectionStrings:EagleLifeDBConnectionString %>" SelectCommand="SELECT * FROM [Leader]"></asp:SqlDataSource>
                             </td>
                     </tr>
                 </table>
             </div>
-            <asp:SqlDataSource ID="EagleLifeDB" runat="server" ConnectionString="<%$ ConnectionStrings:EagleLifeDBConnectionString %>" SelectCommand="SELECT * FROM [Student]"></asp:SqlDataSource>
-            <br />
-            <asp:Button ID="btnSaveFile" runat="server" Text="Save list to file..." OnClick="btnSaveFile_Click" />
-                <br />
+            </div>
             <br />
             <asp:Label ID="lblSaveStatus" runat="server"></asp:Label>
             <br />

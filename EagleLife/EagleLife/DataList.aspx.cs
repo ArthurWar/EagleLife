@@ -65,7 +65,7 @@ namespace EagleLife
                         stringBuilder.Append("\r\n");
                     }
                 }
-                string strFileName = strDelimiter == "," ? "Data.csv" : "Data.txt";
+                string strFileName = strDelimiter == "," ? "Students.csv" : "Students.txt";
                 string subPath = HttpRuntime.AppDomainAppPath + "\\ExportedData\\";
 
                 bool exists = System.IO.Directory.Exists(subPath);
@@ -86,6 +86,76 @@ namespace EagleLife
                     }
                 }
                     
+
+                StreamWriter file = new StreamWriter(subPath + strFileName);
+                file.WriteLine(stringBuilder.ToString());
+                file.Close();
+                lblSaveStatus.Text = "Save to " + subPath + strFileName + " successful.";
+                lblSaveStatus.ForeColor = System.Drawing.Color.Green;
+            }
+            catch (SqlException ex)
+            {
+                lblSaveStatus.Text = "Error: " + ex.Message;
+                lblSaveStatus.ForeColor = System.Drawing.Color.Red;
+                throw;
+            }
+        }
+
+        protected void btnSaveLeaderFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lblFolderStatus.Text = "";
+                lblSaveStatus.Text = "";
+                string strDelimiter = ",";
+                string connectionString = ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString;
+                StringBuilder stringBuilder = new StringBuilder();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT [LID],[LName],[LPhone],[LEmail],[ScID] FROM [Leader];", connectionString);
+                    DataSet dataSet = new DataSet();
+                    dataAdapter.Fill(dataSet);
+                    dataSet.Tables[0].TableName = "Leaders";
+
+                    stringBuilder.Append("ID" + strDelimiter);
+                    stringBuilder.Append("Name" + strDelimiter);
+                    stringBuilder.Append("Phone" + strDelimiter);
+                    stringBuilder.Append("Email" + strDelimiter);
+                    stringBuilder.Append("School Code" + strDelimiter);
+                    stringBuilder.Append("\r\n");
+
+                    foreach (DataRow studentDR in dataSet.Tables["Leaders"].Rows)
+                    {
+                        int studentID = Convert.ToInt32(studentDR["LID"]);
+                        stringBuilder.Append(studentID.ToString() + strDelimiter);
+                        stringBuilder.Append(studentDR["LName"].ToString() + strDelimiter);
+                        stringBuilder.Append(studentDR["LPhone"].ToString() + strDelimiter);
+                        stringBuilder.Append(studentDR["LEmail"].ToString() + strDelimiter);
+                        stringBuilder.Append(studentDR["ScID"].ToString() + strDelimiter);
+                        stringBuilder.Append("\r\n");
+                    }
+                }
+                string strFileName = strDelimiter == "," ? "Leaders.csv" : "Leaders.txt";
+                string subPath = HttpRuntime.AppDomainAppPath + "\\ExportedData\\";
+
+                bool exists = System.IO.Directory.Exists(subPath);
+
+                if (!exists)
+                {
+                    try
+                    {
+                        System.IO.Directory.CreateDirectory(subPath);
+                        lblFolderStatus.Text = "Folder ExportedData created. ";
+                        lblFolderStatus.ForeColor = System.Drawing.Color.Green;
+                    }
+                    catch (IOException ex)
+                    {
+                        lblFolderStatus.Text = "Error: " + ex.Message;
+                        lblFolderStatus.ForeColor = System.Drawing.Color.Red;
+                        throw;
+                    }
+                }
+
 
                 StreamWriter file = new StreamWriter(subPath + strFileName);
                 file.WriteLine(stringBuilder.ToString());

@@ -10,122 +10,95 @@ using System.Configuration;
 using System.Text;
 using System.IO;
 using System.Data.Common;
-using Microsoft.AspNetCore.Mvc;
-//using System.Web.Mvc;
 
 namespace EagleLife
 {
-    public class HomeController : System.Web.Mvc.Controller
+
+    public partial class DataList : System.Web.UI.Page
     {
-        // GET: Home
-        public ActionResult Index()
+
+        protected void Page_Load(object sender, EventArgs e)
         {
-            EagleLifeDBEntities entities = new EagleLifeDBEntities();
-            return DataView(from Student in entities.Students.Take(8)
-                        select Student);
+
         }
 
-        private ActionResult DataView(IQueryable<Student> queryables)
+        protected void Button1_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Response.Redirect("~/Default.aspx");
         }
 
-        [HttpPost]
-        //This code needs to be called by an HTML "Export" button on the Datalist web page 
-        //This page has the code to do it - https://www.aspsnippets.com/Articles/Convert-List-of-Objects-to-CSV-file-using-C-in-ASPNet-MVC.aspx
-        //
-        public FileResult Export()
+
+
+        protected void btnSaveFile_Click(object sender, EventArgs e)
         {
-            EagleLifeDBEntities entities = new EagleLifeDBEntities();
-            List<object> Students = (from Student in entities.Students.ToList().Take(8)
-                                     select new[] { Student.StID.ToString(),
-                                                            Student.StName,
-                                                            Student.StEmail,
-                                                            Student.StPhone,
-                                                            Student.StLeader,
-                                                            Student.StSchool,
-                                                            Student.StHasGroup.ToString(),
-                                                            Student.StGroupCode.ToString()
-
-                                      }).ToList<object>();
-
-            //Insert the Column Names.
-            Students.Insert(0, new string[8] { "StID", "StName", "StEmail", "StPhone", "StLeader", "StSchool", "StHasGroup", "StGroupCode" });
-
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < Students.Count; i++)
+            try
             {
-                string[] customer = (string[])Students[i];
-                for (int j = 0; j < customer.Length; j++)
+                lblFolderStatus.Text = "";
+                lblSaveStatus.Text = "";
+                string strDelimiter = ",";
+                string connectionString = ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString;
+                StringBuilder stringBuilder = new StringBuilder();
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    //Append data with separator.
-                    sb.Append(customer[j] + ',');
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT [StID],[StName],[StPhone],[StLeader],[StSchool],[StGroupCode] FROM [Student];", connectionString);
+                    DataSet dataSet = new DataSet();
+                    dataAdapter.Fill(dataSet);
+                    dataSet.Tables[0].TableName = "Students";
+
+                    stringBuilder.Append("ID" + strDelimiter);
+                    stringBuilder.Append("Name" + strDelimiter);
+                    stringBuilder.Append("Phone" + strDelimiter);
+                    stringBuilder.Append("Leader" + strDelimiter);
+                    stringBuilder.Append("School" + strDelimiter);
+                    stringBuilder.Append("Group Code" + strDelimiter);
+                    stringBuilder.Append("\r\n");
+
+                    foreach (DataRow studentDR in dataSet.Tables["Students"].Rows)
+                    {
+                        int studentID = Convert.ToInt32(studentDR["StID"]);
+                        stringBuilder.Append(studentID.ToString() + strDelimiter);
+                        stringBuilder.Append(studentDR["StName"].ToString() + strDelimiter);
+                        stringBuilder.Append(studentDR["StPhone"].ToString() + strDelimiter);
+                        stringBuilder.Append(studentDR["StLeader"].ToString() + strDelimiter);
+                        stringBuilder.Append(studentDR["StSchool"].ToString() + strDelimiter);
+                        stringBuilder.Append(studentDR["StGroupCode"].ToString() + strDelimiter);
+                        stringBuilder.Append("\r\n");
+                    }
                 }
+                string strFileName = strDelimiter == "," ? "Data.csv" : "Data.txt";
+                string subPath = HttpRuntime.AppDomainAppPath + "\\ExportedData\\";
 
-                //Append new line character.
-                sb.Append("\r\n");
+                bool exists = System.IO.Directory.Exists(subPath);
 
+                if (!exists)
+                {
+                    try
+                    {
+                        System.IO.Directory.CreateDirectory(subPath);
+                        lblFolderStatus.Text = "Folder ExportedData created. ";
+                        lblFolderStatus.ForeColor = System.Drawing.Color.Green;
+                    }
+                    catch (IOException ex)
+                    {
+                        lblFolderStatus.Text = "Error: " + ex.Message;
+                        lblFolderStatus.ForeColor = System.Drawing.Color.Red;
+                        throw;
+                    }
+                }
+                    
+
+                StreamWriter file = new StreamWriter(subPath + strFileName);
+                file.WriteLine(stringBuilder.ToString());
+                file.Close();
+                lblSaveStatus.Text = "Save to " + subPath + strFileName + " successful.";
+                lblSaveStatus.ForeColor = System.Drawing.Color.Green;
             }
-
-            return FileContentResult(Encoding.UTF8.GetBytes(sb.ToString()), "text/csv", "EagleLife_Output.csv");
-        }
-
-        private FileResult FileContentResult(byte[] vs, string v1, string v2)
-        {
-            throw new NotImplementedException();
-        }
-    }
-        public partial class DataList : System.Web.UI.Page
-        {
-
-            protected void Page_Load(object sender, EventArgs e)
+            catch (SqlException ex)
             {
-
+                lblSaveStatus.Text = "Error: " + ex.Message;
+                lblSaveStatus.ForeColor = System.Drawing.Color.Red;
+                throw;
             }
-
-            protected void Button1_Click(object sender, EventArgs e)
-            {
-                Response.Redirect("~/Default.aspx");
-            }
-
-
-
-            protected void btnSaveFile_Click(object sender, EventArgs e)
-            {
-
-
-
-
-            }
-
-
-            protected void btnSaveFile_Click1(object sender, EventArgs e)
-            {
-            //StreamWriter swrOutput;
-            String FileName = "EagleLife_Output.csv";
-            //String FilePath = "C:/Users/Sarah/Downloads"; //Replace this
-            //swrOutput = File.CreateText(dlgSave.FileName)
-
-            //File.SetAttributes(FileName, FileAttributes.Normal);
-            System.Web.HttpResponse response = System.Web.HttpContext.Current.Response;
-            response.ClearContent();
-            response.Clear();
-            response.ContentType = "text/plain";
-            response.AddHeader("Content-Disposition", "attachment; EagleLife_Output=" + FileName + ";");
-            //response.TransmitFile(FilePath);
-            response.TransmitFile(Server.MapPath("/EagleLife_Output.csv"));
-            response.Flush();
-            response.End();
-
         }
-      
-                            
-
-        protected void EagleLifeDB_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
-        {
-
-        }
-
     }
 }
-//}

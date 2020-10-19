@@ -51,15 +51,6 @@ namespace EagleLife
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// LinkButton2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
-
-        /// <summary>
         /// txtPassword control.
         /// </summary>
         /// <remarks>
@@ -69,13 +60,22 @@ namespace EagleLife
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
-        /// ForgotLnk control.
+        /// Changelink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton ForgotLnk;
+        protected global::System.Web.UI.WebControls.LinkButton Changelink;
+
+        /// <summary>
+        /// ForgotLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton ForgotLink;
 
         /// <summary>
         /// chkRmb control.
@@ -96,13 +96,13 @@ namespace EagleLife
         protected global::System.Web.UI.WebControls.Button btnLogin;
 
         /// <summary>
-        /// lblDatafill control.
+        /// lblDataFill control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDatafill;
+        protected global::System.Web.UI.WebControls.Label lblDataFill;
 
         /// <summary>
         /// lblLoginError control.

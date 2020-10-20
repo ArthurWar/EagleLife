@@ -11,7 +11,7 @@ namespace EagleLife
 {
 
 
-    public partial class PassWordForgot
+    public partial class PasswordForgot
     {
 
         /// <summary>
@@ -33,12 +33,12 @@ namespace EagleLife
         protected global::System.Web.UI.WebControls.PasswordRecovery PasswordRecovery1;
 
         /// <summary>
-        /// Button1 control.
+        /// btmBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btmBack;
     }
 }

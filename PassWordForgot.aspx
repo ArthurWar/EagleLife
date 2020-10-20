@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PassWordForgot.aspx.cs" Inherits="EagleLife.PassWordForgot" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PasswordForgot.aspx.cs" Inherits="EagleLife.PasswordForgot" %>
 
 <!DOCTYPE html>
 
@@ -6,13 +6,18 @@
 <head runat="server">
     <title></title>
 </head>
-<body>
+<body style="height: 172px">
     <form id="form1" runat="server">
         <div>
-            <asp:PasswordRecovery ID="PasswordRecovery1" runat="server" Height="176px" OnSendingMail="PasswordRecovery1_SendingMail" Width="434px">
-            </asp:PasswordRecovery>
         </div>
-        <asp:Button ID="Button1" runat="server" Height="33px" OnClick="Button1_Click" Text="Go Back!" Width="116px" />
+        <br />
+        <asp:PasswordRecovery ID="PasswordRecovery1" runat="server" OnSendingMail="PasswordRecovery1_SendingMail" Height="192px" SuccessPageUrl="~/Login.aspx" Width="459px">
+        </asp:PasswordRecovery>
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Button ID="btmBack" runat="server" OnClick="btmBack_Click" Text="Go Back!" />
+        </p>
     </form>
 </body>
 </html>

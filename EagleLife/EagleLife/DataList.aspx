@@ -13,7 +13,9 @@
             <br />
             <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="XX-Large" Font-Underline="True" Text="Student Database"></asp:Label>
             &nbsp;<br />
+            <br />
             <asp:Button ID="btnSaveStudentFile" runat="server" Text="Save list to file..." OnClick="btnSaveFile_Click" />
+            <br />
             <br />
             <div style="text-align: left;">
                 <table align="center" width="75%">
@@ -39,7 +41,9 @@
             <div style="vertical-align:middle; text-align: center;">
                 <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="XX-Large" Font-Underline="True" Text="Leader Database"></asp:Label>
                 <br />
+                <br />
                 <asp:Button ID="btnSaveLeaderFile" runat="server" Text="Save list to file..." OnClick="btnSaveLeaderFile_Click" />
+                <br />
                 <table align="center" width="75%">
                     <tr>
                         <td class="auto-style3">

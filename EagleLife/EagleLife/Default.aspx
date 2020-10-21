@@ -63,10 +63,10 @@
                         </td>
                     </tr>
                 </table>
-                <br />
-            <asp:Button ID="btnSwitchList" runat="server" OnClick="btnSwitchList_Click" Text="Switch to List View..." />
-                <asp:Button ID="btnSwitchAM" runat="server" OnClick="btnSwitchAM_Click" Text="Add/Modify Users..." />
             </div>
+            <br />
+            <asp:Button ID="btnSwitchList" runat="server" OnClick="btnSwitchList_Click" Text="Switch to List View..." />
+        &nbsp;&nbsp;&nbsp; <asp:Button ID="btnSwitchAM" runat="server" OnClick="btnSwitchAM_Click" Text="Add/Modify Users..." />
             <br />
             <br />
 
@@ -132,9 +132,11 @@
                     <td class="auto-style8"></td>
                 </tr>
             </table>
+                        <asp:LinkButton ID="Changelink" runat="server" OnClick="ChangeLink_Click">Need to Change Password ?</asp:LinkButton>
                 <br />
             </div>
-        </div>
+            <br />
+        &nbsp;</div>
     </form>
 </body>
 </html>

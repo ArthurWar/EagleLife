@@ -74,6 +74,7 @@
                 </table>
                 <br />
             <asp:Button ID="btnSwitchList" runat="server" OnClick="btnSwitchList_Click" Text="Switch to Search..." />
+                <br />
             </div>
             <br />
 

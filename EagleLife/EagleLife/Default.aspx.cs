@@ -209,5 +209,10 @@ namespace EagleLife
         {
 
         }
+
+        protected void ChangeLink_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("PassChange.aspx");
+        }
     }
 }

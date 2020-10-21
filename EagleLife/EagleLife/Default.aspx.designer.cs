@@ -58,6 +58,24 @@ namespace EagleLife {
         protected global::System.Web.UI.WebControls.Label lblRanges;
         
         /// <summary>
+        /// btnSwitchList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSwitchList;
+        
+        /// <summary>
+        /// btnSwitchAM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSwitchAM;
+        
+        /// <summary>
         /// txtUserID control.
         /// </summary>
         /// <remarks>
@@ -164,23 +182,5 @@ namespace EagleLife {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDivision;
-        
-        /// <summary>
-        /// btnSwitchList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSwitchList;
-        
-        /// <summary>
-        /// btnSwitchAM control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSwitchAM;
     }
 }

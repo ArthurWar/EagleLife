@@ -60,15 +60,6 @@ namespace EagleLife
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
-        /// Changelink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton Changelink;
-
-        /// <summary>
         /// ForgotLink control.
         /// </summary>
         /// <remarks>

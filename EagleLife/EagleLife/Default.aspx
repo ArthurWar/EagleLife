@@ -63,6 +63,9 @@
                         </td>
                     </tr>
                 </table>
+                <br />
+            <asp:Button ID="btnSwitchList" runat="server" OnClick="btnSwitchList_Click" Text="Switch to List View..." />
+                <asp:Button ID="btnSwitchAM" runat="server" OnClick="btnSwitchAM_Click" Text="Add/Modify Users..." />
             </div>
             <br />
             <br />
@@ -131,9 +134,6 @@
             </table>
                 <br />
             </div>
-            <br />
-            <asp:Button ID="btnSwitchList" runat="server" OnClick="btnSwitchList_Click" Text="Switch to List View..." />
-        &nbsp;<asp:Button ID="btnSwitchAM" runat="server" OnClick="btnSwitchAM_Click" Text="Add/Modify Users..." />
         </div>
     </form>
 </body>

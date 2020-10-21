@@ -72,6 +72,8 @@
                         </td>
                     </tr>
                 </table>
+                <br />
+            <asp:Button ID="btnSwitchList" runat="server" OnClick="btnSwitchList_Click" Text="Switch to Search..." />
             </div>
             <br />
 
@@ -85,23 +87,18 @@
                     </td>
                 </tr>
             </table>
+                <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search" />
                 <br />
                 <br />
-            </div>
-
-
-
-            <br />
-            <div>
-            <table align="center" width="30%">
+            <table align="center" width="50%">
                 <tr>
                     <td class="auto-style6">Name:</td>
-                    <td class="auto-style17"><asp:TextBox ID="txtUserName" runat="server" Enabled="False"></asp:TextBox>
+                    <td class="auto-style17"><asp:TextBox ID="txtUserName" runat="server"></asp:TextBox>
                     </td>
                     <td class="auto-style15">
                         Email:</td>
                     <td class="auto-style8">
-                        <asp:TextBox ID="txtUserEmail" runat="server" Enabled="False"></asp:TextBox>
+                        <asp:TextBox ID="txtUserEmail" runat="server"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -116,21 +113,44 @@
                 </tr>
                 <tr>
                     <td class="auto-style6">Phone #: </td>
-                    <td class="auto-style17"><asp:TextBox ID="txtUserPhone" runat="server" Enabled="False"></asp:TextBox>
+                    <td class="auto-style17"><asp:TextBox ID="txtUserPhone" runat="server"></asp:TextBox>
                     </td>
                     <td class="auto-style15">
+                        Leader /
                         Division:</td>
                     <td class="auto-style8">
-                        <asp:TextBox ID="txtDivision" runat="server" Enabled="False"></asp:TextBox>
+                        <asp:TextBox ID="txtDivision" runat="server"></asp:TextBox>
 
 
 
                     </td>
                 </tr>
             </table>
-                </div>
-            <br />
-            <asp:Button ID="btnSwitchList" runat="server" OnClick="btnSwitchList_Click" Text="Switch to Search..." />
+                <br />
+                <asp:Label ID="lblSystemMessage" runat="server"></asp:Label>
+                <br />
+                <br />
+            <table align="center">
+                <tr>
+                    <td class="auto-style6">
+                <asp:RadioButtonList ID="rdoAddModify" runat="server" OnSelectedIndexChanged="rdoAddModify_SelectedIndexChanged" Width="90px">
+                    <asp:ListItem Selected="True">Add</asp:ListItem>
+                    <asp:ListItem>Modify</asp:ListItem>
+                </asp:RadioButtonList>
+                </tr>
+            </table>
+                <br />
+                <asp:Button ID="btnConfirm" runat="server" OnClick="btnConfirm_Click" Text="Confirm" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
+                <br />
+                <br />
+                <br />
+                <br />
+            </div>
+
+
+
         </div>
     </form>
 </body>

@@ -11,7 +11,7 @@ namespace EagleLife
 {
 
 
-    public partial class PassWordChange
+    public partial class Default
     {
 
         /// <summary>
@@ -24,6 +24,15 @@ namespace EagleLife
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Image2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Image2;
+
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -33,138 +42,156 @@ namespace EagleLife
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// lblUser control.
+        /// rdoSearchToggle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUser;
+        protected global::System.Web.UI.WebControls.RadioButtonList rdoSearchToggle;
 
         /// <summary>
-        /// txtUser control.
+        /// lblRanges control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUser;
+        protected global::System.Web.UI.WebControls.Label lblRanges;
 
         /// <summary>
-        /// lblCurrent control.
+        /// txtUserID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCurrent;
+        protected global::System.Web.UI.WebControls.TextBox txtUserID;
 
         /// <summary>
-        /// txtCurrent control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCurrent;
+        protected global::System.Web.UI.WebControls.Button btnSearch;
 
         /// <summary>
-        /// lblNew control.
+        /// txtUserName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNew;
+        protected global::System.Web.UI.WebControls.TextBox txtUserName;
 
         /// <summary>
-        /// txtNew control.
+        /// lblSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNew;
+        protected global::System.Web.UI.WebControls.Label lblSearch;
 
         /// <summary>
-        /// lblConfirm control.
+        /// txtUserSchool control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblConfirm;
+        protected global::System.Web.UI.WebControls.TextBox txtUserSchool;
 
         /// <summary>
-        /// txtConfirm control.
+        /// Image1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtConfirm;
+        protected global::System.Web.UI.WebControls.Image Image1;
 
         /// <summary>
-        /// btnChange control.
+        /// userHasGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnChange;
+        protected global::System.Web.UI.WebControls.CheckBox userHasGroup;
 
         /// <summary>
-        /// BtnCncl control.
+        /// txtUserPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnCncl;
+        protected global::System.Web.UI.WebControls.TextBox txtUserPhone;
 
         /// <summary>
-        /// lblIUser control.
+        /// txtUserEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIUser;
+        protected global::System.Web.UI.WebControls.TextBox txtUserEmail;
 
         /// <summary>
-        /// lblMatch control.
+        /// btnOpenEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMatch;
+        protected global::System.Web.UI.WebControls.Button btnOpenEmail;
 
         /// <summary>
-        /// lblIPass control.
+        /// txtUserGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIPass;
+        protected global::System.Web.UI.WebControls.TextBox txtUserGroup;
 
         /// <summary>
-        /// lblLength control.
+        /// txtDivision control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLength;
+        protected global::System.Web.UI.WebControls.TextBox txtDivision;
 
         /// <summary>
-        /// lblChange control.
+        /// Changelink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblChange;
+        protected global::System.Web.UI.WebControls.LinkButton Changelink;
+
+        /// <summary>
+        /// btnSwitchList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSwitchList;
+
+        /// <summary>
+        /// btnSwitchAM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSwitchAM;
     }
 }

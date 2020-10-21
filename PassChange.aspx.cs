@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -9,56 +10,81 @@ using System.Web.UI.WebControls;
 
 namespace EagleLife
 {
+    
     public partial class PassWordChange : System.Web.UI.Page
     {
-        string strconstr = ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString;
-
+        string strcon = ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString;
         string str = null;
-        SqlCommand cmd;
+        SqlCommand com;
         byte up;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblSuccess.Visible = false;
+            lblIUser.Visible = false;
+            lblIPass.Visible = false;
             lblChange.Visible = false;
-            ValidationSettings.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-            ChangePassword1.ChangingPassword += new LoginCancelEventHandler(this.ChangePassword1_ChangedPassword);
+            lblMatch.Visible = false;
+            lblLength.Visible = false;
         }
 
-        protected void ChangePassword1_ChangedPassword(object sender, EventArgs e)
+        protected void BtnCncl_Click(object sender, EventArgs e)
         {
-            if(!ChangePassword1.CurrentPassword.Equals(ChangePassword1.NewPassword, StringComparison.CurrentCultureIgnoreCase))
+            Response.Redirect("Default.aspx");
+        }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "<Pending>")]
+        protected void btnChange_Click(object sender, EventArgs e)
+        {
+            SqlConnection connect = new SqlConnection(strcon);
+            connect.Open();
+            str = "select * from AdminLogin";
+            com = new SqlCommand(str, connect);
+            SqlDataReader reader = com.ExecuteReader();
+
+            while (reader.Read())
             {
-                int rowsaffected = 0;
-
-                string query = "Update AdminLogin Set PassWord = @NewPassWord where AdminUserName = @AdminUserName AND AdminPassWord = @AdminPassWord";
-
-                string constr = ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString;
-
-                using(SqlConnection con = new SqlConnection(constr))
-                {
-                    using(SqlCommand cmd = new SqlCommand(query))
+                if (txtCurrent.Text.Length > 6)
+                {                  
+                    if (txtNew.Text == txtConfirm.Text)
                     {
-                        using(SqlDataAdapter sda = new SqlDataAdapter())
+                        if (txtCurrent.Text == reader["AdminPassWord"].ToString())
                         {
-                            cmd.Parameters.AddWithValue("@AdminUserName", this.Page.User.Identity.Name);
-                            cmd.Parameters.AddWithValue("AdminPassWord", ChangePassword1.CurrentPassword);
-                            cmd.Parameters.AddWithValue("@NewPassWord", ChangePassword1.NewPassword);
-                            cmd.Connection = con;
-                            con.Open();
-                            rowsaffected = cmd.ExecuteNonQuery();
-                            con.Close();
+                            up = 1;
+
                         }
-                    }
-                    if(rowsaffected > 0)
-                    {
-                        lblSuccess.Visible = true; 
+
+                        else
+                        {
+                            lblIPass.Visible = true;
+                            lblIUser.Visible = true;
+                        }
                     }
                     else
                     {
-                        lblChange.Visible = true;
+                        lblMatch.Visible = true;
                     }
                 }
+                else
+                {
+                    lblLength.Visible = true;
+                }
+              
+            }
+            reader.Close();
+            connect.Close();
+            if (up == 1)
+            {
+                connect.Open();
+                str = "update AdminLogin set AdminPassWord =@AdminPassWord where AdminUserName='" + Session["AdminUserName"].ToString() + "'";
+                com = new SqlCommand(str, connect);
+                com.Parameters.Add(new SqlParameter("@AdminPassWord", SqlDbType.VarChar, 50));
+                com.Parameters["@AdminPassWord"].Value = txtNew.Text;
+                com.ExecuteNonQuery();
+                connect.Close();
+                lblChange.Visible = true;
             }
         }
+
+      
     }
 }

@@ -80,11 +80,6 @@ namespace EagleLife
 
         }
 
-        protected void ChangeLink_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("PassChange.aspx");
-        }
-
         protected void ForgotLink_Click(object sender, EventArgs e)
         {
             Response.Redirect("PassWordForgot.aspx");

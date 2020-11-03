@@ -51,6 +51,15 @@ namespace EagleLife
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
+        /// txtCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCode;
+
+        /// <summary>
         /// btnSend control.
         /// </summary>
         /// <remarks>
@@ -60,6 +69,15 @@ namespace EagleLife
         protected global::System.Web.UI.WebControls.Button btnSend;
 
         /// <summary>
+        /// btnVerify control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVerify;
+
+        /// <summary>
         /// lblSent control.
         /// </summary>
         /// <remarks>
@@ -67,6 +85,24 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSent;
+
+        /// <summary>
+        /// lblcode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblcode;
+
+        /// <summary>
+        /// lblincode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblincode;
 
         /// <summary>
         /// lblWrong control.

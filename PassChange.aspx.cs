@@ -21,7 +21,6 @@ namespace EagleLife
         protected void Page_Load(object sender, EventArgs e)
         {
             lblIUser.Visible = false;
-            lblIPass.Visible = false;
             lblChange.Visible = false;
             lblMatch.Visible = false;
             lblLength.Visible = false;
@@ -29,7 +28,7 @@ namespace EagleLife
 
         protected void BtnCncl_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect("Login.aspx");
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "<Pending>")]
@@ -41,13 +40,7 @@ namespace EagleLife
             com = new SqlCommand(str, connect);
             SqlDataReader reader = com.ExecuteReader();
 
-            while (reader.Read())
-            {
-                if (txtCurrent.Text == reader["AdminPassWord"].ToString())
-                {
-                    up = 1;
-                }
-            }
+            
             if (txtUser.Text == "")
             {
                 lblIUser.Visible = true;
@@ -57,8 +50,7 @@ namespace EagleLife
 
                 reader.Close();
                 connect.Close();
-                if (up == 1)
-                {
+                
                     if (txtNew.Text.Length >= 6 && txtConfirm.Text.Length >= 6)
                     {
                         if (txtNew.Text == txtConfirm.Text)
@@ -84,20 +76,11 @@ namespace EagleLife
                     {
                         lblLength.Visible = true;
                     }
-                }
-
-                else
-                {
-                    lblIPass.Visible = true;
-                }
 
             }
         }
 
-        protected void LnkHome_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Default.aspx");
-        }
+       
     }
 
       

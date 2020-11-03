@@ -62,7 +62,7 @@
                         <asp:Label ID="lblDataFill" runat="server" ForeColor="Red" Text="Missing Input! Please fill out all  boxes."></asp:Label>
                     </td>
                     <td>
-                        <asp:Label ID="lblLoginError" runat="server" Text="Incorrect User Credentials" ForeColor="Red"></asp:Label>
+                        <asp:Label ID="lblLoginError" runat="server" Text="Error Logging In. Please try again." ForeColor="Red"></asp:Label>
                     </td>
                 </tr>
             </table>

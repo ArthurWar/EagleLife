@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 
+
 namespace EagleLife
 {
     public partial class Login : System.Web.UI.Page
@@ -39,6 +40,9 @@ namespace EagleLife
              if (txtUsername.Text != "" && txtPassword.Text != "")
             {
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString);
+                SqlDataAdapter data = new SqlDataAdapter("select * from AdminLogin", con);
+                DataTable dt = new DataTable();
+                data.Fill(dt);
 
                 con.Open();
 
@@ -48,25 +52,35 @@ namespace EagleLife
 
                 SqlDataReader sdr = cmd.ExecuteReader();
 
-                if(sdr.Read())
+                if (dt.Rows.Count > 0)
                 {
-                    if(chkRmb.Checked == true)
+
+
+                    if (sdr.Read())
                     {
-                        Response.Cookies["AdminUserName"].Value = txtUsername.Text;
-                        Response.Cookies["AdminUserName"].Expires = DateTime.Now.AddDays(7);
+                        if (chkRmb.Checked == true)
+                        {
+                            Response.Cookies["AdminUserName"].Value = txtUsername.Text;
+                            Response.Cookies["AdminUserName"].Expires = DateTime.Now.AddDays(7);
+                        }
+                        else
+                        {
+                            Response.Cookies["AdminUserName"].Expires = DateTime.Now.AddDays(-1);
+                        }
+                        con.Close();
+                        Session["AdminUserName"] = txtUsername.Text.Trim();
+                        Session["AdminPassWord"] = txtPassword.Text.Trim();
+                        Response.Redirect("Initial.aspx");
                     }
                     else
                     {
-                        Response.Cookies["AdminUserName"].Expires = DateTime.Now.AddDays(-1);
+                        lblLoginError.Visible = true;
                     }
-                    con.Close();
-                    Session["AdminUserName"] = txtUsername.Text.Trim();
-                    Session["AdminPassWord"] = txtPassword.Text.Trim();
-                    Response.Redirect("Initial.aspx");
                 }
                 else
                 {
                     lblLoginError.Visible = true;
+
                 }
             }
             else

@@ -13,7 +13,7 @@ namespace EagleLife
     
     public partial class PassWordChange : System.Web.UI.Page
     {
-        string strcon = ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString;
+        string strcon = ConfigurationManager.ConnectionStrings["LoginConnection"].ConnectionString;
         string str = null;
         SqlCommand com;
         byte up;
@@ -29,7 +29,7 @@ namespace EagleLife
 
         protected void BtnCncl_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect("Login.aspx");
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "<Pending>")]
@@ -43,7 +43,7 @@ namespace EagleLife
 
             while (reader.Read())
             {
-                if (txtCurrent.Text.Length > 6)
+                if (txtNew.Text.Length > 6)
                 {                  
                     if (txtNew.Text == txtConfirm.Text)
                     {

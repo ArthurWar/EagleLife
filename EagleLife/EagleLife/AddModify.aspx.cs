@@ -209,7 +209,15 @@ namespace EagleLife
                         insertCommand.Parameters.AddWithValue("@LEmail", txtUserEmail.Text);
                         insertCommand.Parameters.AddWithValue("@LPhone", txtUserSchool.Text);
                         int.TryParse(txtDivision.Text, out int intScID);
-                        insertCommand.Parameters.AddWithValue("@ScID", intScID);
+                        if (intScID == 0)
+                        {
+                            insertCommand.Parameters.AddWithValue("@ScID", DBNull.Value);
+                        }
+                        else
+                        {
+                            insertCommand.Parameters.AddWithValue("@ScID", intScID);
+                        }
+
 
                         try
                         {
@@ -251,7 +259,14 @@ namespace EagleLife
                         insertCommand.Parameters.AddWithValue("@StEmail", txtUserEmail.Text);
                         insertCommand.Parameters.AddWithValue("@StSchool", txtUserSchool.Text);
                         int.TryParse(txtUserGroup.Text, out int intGroupCode);
-                        insertCommand.Parameters.AddWithValue("@StGroupCode", intGroupCode);
+                        if (intGroupCode == 0)
+                        {
+                            insertCommand.Parameters.AddWithValue("@StGroupCode", DBNull.Value);
+                        }
+                        else
+                        {
+                            insertCommand.Parameters.AddWithValue("@StGroupCode", intGroupCode);
+                        }
                         insertCommand.Parameters.AddWithValue("@StPhone", txtUserPhone.Text);
                         insertCommand.Parameters.AddWithValue("@StLeader", txtDivision.Text);
 
@@ -295,7 +310,14 @@ namespace EagleLife
                         insertCommand.Parameters.AddWithValue("@TSchool", txtUserSchool.Text);
                         insertCommand.Parameters.AddWithValue("@TPhone", txtUserPhone.Text);
                         int.TryParse(txtDivision.Text, out int intDivisionCode);
-                        insertCommand.Parameters.AddWithValue("@TDivisonCode", intDivisionCode);
+                        if (intDivisionCode == 0)
+                        {
+                            insertCommand.Parameters.AddWithValue("@TDivisionCode", DBNull.Value);
+                        }
+                        else
+                        {
+                            insertCommand.Parameters.AddWithValue("@TDivisonCode", intDivisionCode);
+                        }
 
                         try
                         {

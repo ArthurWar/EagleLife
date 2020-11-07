@@ -28,8 +28,12 @@
 </head>
  <body>
 <form runat ="server" id="Login" >
-         <asp:Label ID="Label3" runat="server" Text="Young Life Admin Login" Font-Bold="true" Font-Size="XX-Large"></asp:Label>
-       <table class="auto-style4" >
+         <div style="vertical-align:middle; text-align: center;">
+             <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/title_small.png" />
+             <br />
+         <asp:Label ID="Label3" runat="server" Text="Admin Login" Font-Bold="True" Font-Size="XX-Large"></asp:Label>
+             <br />
+       <table align="center" width="30%" class="auto-style4" >
                 <tr>
                     <td class="auto-style5">
                         <asp:Label ID="Label1" runat="server" Text="Username:"></asp:Label></td>
@@ -52,10 +56,10 @@
                 </tr>
                 <tr>
                     <td class="auto-style2">
-                        <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" Height="46px" Width="166px" />
+                        <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" Height="31px" Width="97px" />
                     </td>
                     <td class="auto-style3">
-                        &nbsp;</td>
+                        </td>
                 </tr>
                 <tr>
                     <td class="auto-style5">
@@ -66,7 +70,8 @@
                     </td>
                 </tr>
             </table>
-         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:EagleLifeDBConnectionString %>" SelectCommand="SELECT [AdminUserName], [AdminPassWord], [AdminEmail] FROM [AdminLogin]"></asp:SqlDataSource>
+         </div>
+         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LoginConnection %>" SelectCommand="SELECT * FROM [AdminLogin]"></asp:SqlDataSource>
          <br />
     </form>
 </body>

@@ -38,7 +38,7 @@ namespace EagleLife
 
             if (txtUsername.Text != "" && txtPassword.Text != "")
             {
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString);
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["LoginConnection"].ConnectionString);
 
                 con.Open();
 

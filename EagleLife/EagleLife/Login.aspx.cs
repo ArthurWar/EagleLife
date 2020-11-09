@@ -28,8 +28,6 @@ namespace EagleLife
 
         }
 
-
-
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             string user = txtUsername.Text;
@@ -39,33 +37,41 @@ namespace EagleLife
             if (txtUsername.Text != "" && txtPassword.Text != "")
             {
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["LoginConnection"].ConnectionString);
+                SqlDataAdapter data = new SqlDataAdapter("select * from AdminLogin", con);
+                DataTable dt = new DataTable();
+                data.Fill(dt);
 
                 con.Open();
 
-                string checkuserpass = "Select AdminID, AdminUserName, AdminPassWord  From AdminLogin where AdminUserName = @AdminUserName AND AdminPassWord = @AdminPassWord ";
+                string checkuserpass = "Select AdminID, AdminUserName, AdminPassWord  From AdminLogin where AdminUserName = '" + user + "' AND AdminPassWord ='" + pass + "' ";
 
                 SqlCommand cmd = new SqlCommand(checkuserpass, con);
 
-                cmd.Parameters.AddWithValue("@AdminUserName", user);
-                cmd.Parameters.AddWithValue("@AdminPassWord", pass);
+                SqlDataReader sdr = cmd.ExecuteReader();
 
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-
-                if(count == 1)
+                if (dt.Rows.Count > 0)
                 {
-                    if(chkRmb.Checked == true)
+                    if (sdr.Read())
                     {
-                        Response.Cookies["AdminUserName"].Value = txtUsername.Text;
-                        Response.Cookies["AdminUserName"].Expires = DateTime.Now.AddDays(7);
+                        if (chkRmb.Checked == true)
+                        {
+                            Response.Cookies["AdminUserName"].Value = txtUsername.Text;
+                            Response.Cookies["AdminUserName"].Expires = DateTime.Now.AddDays(7);
+                        }
+                        else
+                        {
+                            Response.Cookies["AdminUserName"].Expires = DateTime.Now.AddDays(-1);
+                        }
+                        con.Close();
+                        Session["AdminUserName"] = txtUsername.Text.Trim();
+                        Session["AdminPassWord"] = txtPassword.Text.Trim();
+                        Response.Redirect("Initial.aspx");
                     }
                     else
                     {
-                        Response.Cookies["AdminUserName"].Expires = DateTime.Now.AddDays(-1);
+                        lblLoginError.Visible = true;
                     }
-                    con.Close();
-                    Session["AdminUserName"] = txtUsername.Text.Trim();
-                    Session["AdminPassWord"] = txtPassword.Text.Trim();
-                    Response.Redirect("Initial.aspx");
+
                 }
                 else
                 {
@@ -82,7 +88,7 @@ namespace EagleLife
 
         protected void ForgotLink_Click(object sender, EventArgs e)
         {
-            Response.Redirect("PassWordForgot.aspx");
+            Response.Redirect("PassForgot.aspx");
         }
     }
 }

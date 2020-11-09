@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace EagleLife
 {
-    
+
     public partial class PassWordChange : System.Web.UI.Page
     {
         string strcon = ConfigurationManager.ConnectionStrings["LoginConnection"].ConnectionString;
@@ -21,7 +21,6 @@ namespace EagleLife
         protected void Page_Load(object sender, EventArgs e)
         {
             lblIUser.Visible = false;
-            lblIPass.Visible = false;
             lblChange.Visible = false;
             lblMatch.Visible = false;
             lblLength.Visible = false;
@@ -37,27 +36,32 @@ namespace EagleLife
         {
             SqlConnection connect = new SqlConnection(strcon);
             connect.Open();
-            str = "select * from AdminLogin";
+            str = "Select * from AdminLogin";
             com = new SqlCommand(str, connect);
             SqlDataReader reader = com.ExecuteReader();
 
-            while (reader.Read())
+            if (txtUser.Text == "")
             {
-                if (txtNew.Text.Length > 6)
-                {                  
+                lblIUser.Visible = true;
+            }
+            else
+            {
+                reader.Close();
+                connect.Close();
+
+                if (txtNew.Text.Length >= 6 && txtConfirm.Text.Length >= 6)
+                {
                     if (txtNew.Text == txtConfirm.Text)
                     {
-                        if (txtCurrent.Text == reader["AdminPassWord"].ToString())
-                        {
-                            up = 1;
+                        connect.Open();
+                        str = "Update AdminLogin set AdminPassWord = @AdminPassWord where AdminUserName ='" + txtUser.Text + "'";
+                        com = new SqlCommand(str, connect);
+                        com.Parameters.Add(new SqlParameter("@AdminPassWord", SqlDbType.VarChar, 50));
+                        com.Parameters["@AdminPassWord"].Value = txtNew.Text;
+                        com.ExecuteNonQuery();
+                        connect.Close();
+                        lblChange.Visible = true;
 
-                        }
-
-                        else
-                        {
-                            lblIPass.Visible = true;
-                            lblIUser.Visible = true;
-                        }
                     }
                     else
                     {
@@ -68,23 +72,8 @@ namespace EagleLife
                 {
                     lblLength.Visible = true;
                 }
-              
-            }
-            reader.Close();
-            connect.Close();
-            if (up == 1)
-            {
-                connect.Open();
-                str = "update AdminLogin set AdminPassWord =@AdminPassWord where AdminUserName='" + Session["AdminUserName"].ToString() + "'";
-                com = new SqlCommand(str, connect);
-                com.Parameters.Add(new SqlParameter("@AdminPassWord", SqlDbType.VarChar, 50));
-                com.Parameters["@AdminPassWord"].Value = txtNew.Text;
-                com.ExecuteNonQuery();
-                connect.Close();
-                lblChange.Visible = true;
             }
         }
-
-      
     }
+
 }

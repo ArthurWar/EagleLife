@@ -13,7 +13,7 @@
             <br />
             <br />
             Developed by Eagle Eye Consultation<br />
-            Version 0.5.0<br />
+            Version 1.0.0<br />
             <br />
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Go to Application" />
         </div>

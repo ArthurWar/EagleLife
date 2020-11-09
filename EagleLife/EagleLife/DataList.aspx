@@ -44,6 +44,7 @@
                 <br />
                 <asp:Button ID="btnSaveLeaderFile" runat="server" Text="Save list to file..." OnClick="btnSaveLeaderFile_Click" />
                 <br />
+                <br />
                 <table align="center" width="75%">
                     <tr>
                         <td class="auto-style3">
@@ -63,12 +64,12 @@
             </div>
             </div>
             <br />
-            <asp:Label ID="lblSaveStatus" runat="server"></asp:Label>
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Switch to Search View..." />
             <br />
+            <asp:Label ID="lblSaveStatus" runat="server"></asp:Label>
             <asp:Label ID="lblFolderStatus" runat="server"></asp:Label>
                 <br />
                 <br />
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Switch to Search View..." />
         </div>
     </form>
                 

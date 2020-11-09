@@ -134,7 +134,7 @@
             <table align="center">
                 <tr>
                     <td class="auto-style6">
-                <asp:RadioButtonList ID="rdoAddModify" runat="server" OnSelectedIndexChanged="rdoAddModify_SelectedIndexChanged" Width="90px">
+                <asp:RadioButtonList ID="rdoAddModify" runat="server" Width="90px" AutoPostBack="True">
                     <asp:ListItem Selected="True">Add</asp:ListItem>
                     <asp:ListItem>Modify</asp:ListItem>
                 </asp:RadioButtonList>

@@ -13,7 +13,7 @@ namespace EagleLife
 
     public partial class AddModify : System.Web.UI.Page
     {
-        bool isAdding = true;
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -93,6 +93,7 @@ namespace EagleLife
                         }
                         else
                         {
+                            lblSystemMessage.ForeColor = System.Drawing.Color.Red;
                             lblSystemMessage.Text = "User not found.";
                             ClearTextboxes();
                         }
@@ -130,6 +131,7 @@ namespace EagleLife
                         }
                         else
                         {
+                            lblSystemMessage.ForeColor = System.Drawing.Color.Red;
                             lblSystemMessage.Text = "User not found.";
                             ClearTextboxes();
                         }
@@ -165,6 +167,7 @@ namespace EagleLife
                         }
                         else
                         {
+                            lblSystemMessage.ForeColor = System.Drawing.Color.Red;
                             lblSystemMessage.Text = "User not found.";
                             ClearTextboxes();
                         }
@@ -188,7 +191,7 @@ namespace EagleLife
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-            if(isAdding == true)
+            if(rdoAddModify.SelectedIndex == 0)
             {
                 if (txtUserID.Text != "")
                 {
@@ -207,7 +210,7 @@ namespace EagleLife
                         insertCommand.Parameters.AddWithValue("@LID", intUserID);
                         insertCommand.Parameters.AddWithValue("@LName", txtUserName.Text);
                         insertCommand.Parameters.AddWithValue("@LEmail", txtUserEmail.Text);
-                        insertCommand.Parameters.AddWithValue("@LPhone", txtUserSchool.Text);
+                        insertCommand.Parameters.AddWithValue("@LPhone", txtUserPhone.Text);
                         int.TryParse(txtDivision.Text, out int intScID);
                         if (intScID == 0)
                         {
@@ -349,7 +352,7 @@ namespace EagleLife
                     lblSystemMessage.Text = "Please enter a valid ID.";
                 }
             }
-            else
+            else if (rdoAddModify.SelectedIndex == 1)
             {
                 if (txtUserID.Text != "")
                 {
@@ -379,16 +382,20 @@ namespace EagleLife
                             userCount = updateCommand.ExecuteNonQuery();
                             if (userCount == 1)
                             {
-                                lblSystemMessage.Text = "Leader updated.";
+
+                                lblSystemMessage.ForeColor = System.Drawing.Color.Green;
+                                lblSystemMessage.Text = "Leader has been updated.";
                             }
                             else
                             {
+                                lblSystemMessage.ForeColor = System.Drawing.Color.Red;
                                 lblSystemMessage.Text = "Leader does not exist.";
                             }
                         }
                         catch (SqlException ex)
                         {
-                            lblSystemMessage.Text = "Error in updating leader.";
+                            lblSystemMessage.ForeColor = System.Drawing.Color.Red;
+                            lblSystemMessage.Text = "Error: " + ex.Message;
                         }
                         finally
                         {
@@ -423,16 +430,19 @@ namespace EagleLife
                             userCount = updateCommand.ExecuteNonQuery();
                             if (userCount == 1)
                             {
-                                lblSystemMessage.Text = "Student updated.";
+                                lblSystemMessage.ForeColor = System.Drawing.Color.Green;
+                                lblSystemMessage.Text = "Student has been updated.";
                             }
                             else
                             {
+                                lblSystemMessage.ForeColor = System.Drawing.Color.Red;
                                 lblSystemMessage.Text = "Student does not exist.";
                             }
                         }
                         catch (SqlException ex)
                         {
-                            lblSystemMessage.Text = "Error in updating student.";
+                            lblSystemMessage.ForeColor = System.Drawing.Color.Red;
+                            lblSystemMessage.Text = "Error: " + ex.Message;
                         }
                         finally
                         {
@@ -451,10 +461,10 @@ namespace EagleLife
                         SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
 
                         int.TryParse(txtUserID.Text, out int intUserID);
-                        updateCommand.Parameters.AddWithValue("@StID", intUserID);
-                        updateCommand.Parameters.AddWithValue("@StName", txtUserName.Text);
-                        updateCommand.Parameters.AddWithValue("@StSchool", txtUserEmail.Text);
-                        updateCommand.Parameters.AddWithValue("@StPhone", txtUserPhone.Text);
+                        updateCommand.Parameters.AddWithValue("@TID", intUserID);
+                        updateCommand.Parameters.AddWithValue("@TName", txtUserName.Text);
+                        updateCommand.Parameters.AddWithValue("@TSchool", txtUserEmail.Text);
+                        updateCommand.Parameters.AddWithValue("@TPhone", txtUserPhone.Text);
                         int.TryParse(txtDivision.Text, out int intDivisionCode);
                         updateCommand.Parameters.AddWithValue("@TDivisionCode", intDivisionCode);
 
@@ -465,16 +475,19 @@ namespace EagleLife
                             userCount = updateCommand.ExecuteNonQuery();
                             if (userCount == 1)
                             {
-                                lblSystemMessage.Text = "Teen mom updated.";
+                                lblSystemMessage.ForeColor = System.Drawing.Color.Green;
+                                lblSystemMessage.Text = "Teen mom has been updated.";
                             }
                             else
                             {
+                                lblSystemMessage.ForeColor = System.Drawing.Color.Red;
                                 lblSystemMessage.Text = "Teen mom does not exist.";
                             }
                         }
                         catch (SqlException ex)
                         {
-                            lblSystemMessage.Text = "Error in updating teen mom.";
+                            lblSystemMessage.ForeColor = System.Drawing.Color.Red;
+                            lblSystemMessage.Text = "Error: " + ex.Message;
                         }
                         finally
                         {
@@ -488,14 +501,6 @@ namespace EagleLife
                     lblSystemMessage.Text = "Please enter a valid ID.";
                 }
             }
-        }
-
-        protected void rdoAddModify_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (rdoAddModify.SelectedIndex == 0)
-                isAdding = true;
-            else
-                isAdding = false;
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -520,12 +525,15 @@ namespace EagleLife
 
                     if (userCount == 1)
                     {
+                        lblSystemMessage.ForeColor = System.Drawing.Color.Green;
                         lblSystemMessage.Text = "Leader has been deleted";
+                        ClearTextboxes();
                     }
                 }
                 catch (SqlException ex)
                 {
-                    lblSystemMessage.Text = "Error in deleting leader.";
+                    lblSystemMessage.ForeColor = System.Drawing.Color.Red;
+                    lblSystemMessage.Text = "Error: " + ex.Message;
                 }
                 finally
                 {
@@ -552,12 +560,15 @@ namespace EagleLife
 
                     if (userCount == 1)
                     {
+                        lblSystemMessage.ForeColor = System.Drawing.Color.Green;
                         lblSystemMessage.Text = "Student has been deleted";
+                        ClearTextboxes();
                     }
                 }
                 catch (SqlException ex)
                 {
-                    lblSystemMessage.Text = "Error in deleting leader.";
+                    lblSystemMessage.ForeColor = System.Drawing.Color.Red;
+                    lblSystemMessage.Text = "Error: " + ex.Message;
                 }
                 finally
                 {
@@ -584,12 +595,15 @@ namespace EagleLife
 
                     if (userCount == 1)
                     {
+                        lblSystemMessage.ForeColor = System.Drawing.Color.Green;
                         lblSystemMessage.Text = "Teen mom has been deleted";
+                        ClearTextboxes();
                     }
                 }
                 catch (SqlException ex)
                 {
-                    lblSystemMessage.Text = "Error in deleting teen mom.";
+                    lblSystemMessage.ForeColor = System.Drawing.Color.Red;
+                    lblSystemMessage.Text = "Error: " + ex.Message;
                 }
                 finally
                 {

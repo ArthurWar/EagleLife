@@ -43,7 +43,7 @@ namespace EagleLife
                 {
                     string connStr = ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString;
                     SqlConnection conn = new SqlConnection(connStr);
-                    string SQLStr = "Select LID, LName, LPhone, LEmail, LDivisionCode From Leader Where LID = @LID";
+                    string SQLStr = "Select LID, LName, LPhone, LEmail, ScID From Leader Where LID = @LID";
                     SqlCommand comm = new SqlCommand(SQLStr, conn);
                     comm.Parameters.AddWithValue("LID", txtUserID.Text);
                     try
@@ -56,7 +56,7 @@ namespace EagleLife
                             txtUserPhone.Text = reader["LPhone"].ToString();
                             txtUserEmail.Text = reader["LEmail"].ToString();
                             txtUserSchool.Text = "N/A";
-                            txtUserGroup.Text = reader["LDivisionCode"].ToString();
+                            txtUserGroup.Text = reader["ScID"].ToString();
                         }
                         else
                         {
@@ -103,15 +103,7 @@ namespace EagleLife
                             txtUserPhone.Text = reader["StPhone"].ToString();
                             txtUserEmail.Text = reader["StEmail"].ToString();
                             txtUserSchool.Text = reader["StSchool"].ToString();
-                            userHasGroup.Checked = Convert.ToBoolean(reader["StHasGroup"]);
-                            if (userHasGroup.Checked == true)
-                            {
-                                txtUserGroup.Text = reader["StGroupCode"].ToString();
-                            }
-                            else
-                            {
-                                txtUserGroup.Text = "User has no group.";
-                            }
+                            txtUserGroup.Text = reader["StGroupCode"].ToString();
                         }
                         else
                         {

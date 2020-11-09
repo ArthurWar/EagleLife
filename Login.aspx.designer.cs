@@ -7,13 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EagleLife
-{
-
-
-    public partial class Login
-    {
-
+namespace EagleLife {
+    
+    
+    public partial class Login {
+        
+        /// <summary>
+        /// Image1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Image1;
+        
         /// <summary>
         /// Label3 control.
         /// </summary>
@@ -22,7 +29,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
-
+        
         /// <summary>
         /// Label1 control.
         /// </summary>
@@ -31,7 +38,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-
+        
         /// <summary>
         /// txtUsername control.
         /// </summary>
@@ -40,7 +47,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUsername;
-
+        
         /// <summary>
         /// Label2 control.
         /// </summary>
@@ -49,7 +56,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
-
+        
         /// <summary>
         /// txtPassword control.
         /// </summary>
@@ -58,7 +65,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
-
+        
         /// <summary>
         /// ForgotLink control.
         /// </summary>
@@ -67,7 +74,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton ForgotLink;
-
+        
         /// <summary>
         /// chkRmb control.
         /// </summary>
@@ -76,7 +83,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkRmb;
-
+        
         /// <summary>
         /// btnLogin control.
         /// </summary>
@@ -85,7 +92,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLogin;
-
+        
         /// <summary>
         /// lblDataFill control.
         /// </summary>
@@ -94,7 +101,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDataFill;
-
+        
         /// <summary>
         /// lblLoginError control.
         /// </summary>
@@ -103,7 +110,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLoginError;
-
+        
         /// <summary>
         /// SqlDataSource1 control.
         /// </summary>

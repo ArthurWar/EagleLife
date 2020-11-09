@@ -8,7 +8,6 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 
-
 namespace EagleLife
 {
     public partial class Login : System.Web.UI.Page
@@ -36,26 +35,24 @@ namespace EagleLife
             string user = txtUsername.Text;
 
             string pass = txtPassword.Text;
-            
-             if (txtUsername.Text != "" && txtPassword.Text != "")
+
+            if (txtUsername.Text != "" && txtPassword.Text != "")
             {
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString);
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["LoginConnection"].ConnectionString);
                 SqlDataAdapter data = new SqlDataAdapter("select * from AdminLogin", con);
                 DataTable dt = new DataTable();
                 data.Fill(dt);
 
                 con.Open();
 
-                string checkuserpass = "select * from AdminLogin where AdminUserName='"+ user + "' AND AdminPassWord='" + pass + "'";
+                string checkuserpass = "Select AdminID, AdminUserName, AdminPassWord  From AdminLogin where AdminUserName = '"+ user +"' AND AdminPassWord ='"+ pass +"' ";
 
                 SqlCommand cmd = new SqlCommand(checkuserpass, con);
 
                 SqlDataReader sdr = cmd.ExecuteReader();
 
-                if (dt.Rows.Count > 0)
+                if(dt.Rows.Count > 0 )
                 {
-
-
                     if (sdr.Read())
                     {
                         if (chkRmb.Checked == true)
@@ -76,11 +73,11 @@ namespace EagleLife
                     {
                         lblLoginError.Visible = true;
                     }
+
                 }
                 else
                 {
                     lblLoginError.Visible = true;
-
                 }
             }
             else
@@ -93,7 +90,7 @@ namespace EagleLife
 
         protected void ForgotLink_Click(object sender, EventArgs e)
         {
-            Response.Redirect("PassWordForgot.aspx");
+            Response.Redirect("PassForgot.aspx");
         }
     }
 }

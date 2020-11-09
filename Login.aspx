@@ -28,17 +28,21 @@
 </head>
  <body>
 <form runat ="server" id="Login" >
-         <asp:Label ID="Label3" runat="server" Text="Young Life Admin Login" Font-Bold="true" Font-Size="XX-Large"></asp:Label>
-       <table class="auto-style4" >
+         <div style="vertical-align:middle; text-align: center;">
+             <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/title_small.png" />
+             <br />
+         <asp:Label ID="Label3" runat="server" Text="Admin Login" Font-Bold="True" Font-Size="XX-Large"></asp:Label>
+             <br />
+       <table align="center" width="30%" class="auto-style4" >
                 <tr>
                     <td class="auto-style5">
-                        <asp:Label ID="Label1" runat="server" Text="Username:" Font-Size="X-Large"></asp:Label></td>
+                        <asp:Label ID="Label1" runat="server" Text="Username:"></asp:Label></td>
                     <td class="auto-style1">
                         <asp:TextBox ID="txtUsername" autocomplete="off" runat="server"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td class="auto-style5">
-                        <asp:Label ID="Label2" runat="server" Text="Password:" Font-Size="X-Large"></asp:Label></td>
+                        <asp:Label ID="Label2" runat="server" Text="Password:"></asp:Label></td>
                     <td class="auto-style1">
                         <asp:TextBox ID="txtPassword" AutoComplete="off" runat="server"></asp:TextBox></td>
                 </tr>
@@ -52,21 +56,22 @@
                 </tr>
                 <tr>
                     <td class="auto-style2">
-                        <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" Height="51px" Width="168px" />
+                        <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" Height="31px" Width="97px" />
                     </td>
                     <td class="auto-style3">
-                        &nbsp;</td>
+                        </td>
                 </tr>
                 <tr>
                     <td class="auto-style5">
                         <asp:Label ID="lblDataFill" runat="server" ForeColor="Red" Text="Missing Input! Please fill out all  boxes."></asp:Label>
                     </td>
                     <td>
-                        <asp:Label ID="lblLoginError" runat="server" Text="Error Logging In. Please try again." ForeColor="Red"></asp:Label>
+                        <asp:Label ID="lblLoginError" runat="server" Text="Incorrect User Credentials" ForeColor="Red"></asp:Label>
                     </td>
                 </tr>
             </table>
-         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:EagleLifeDBConnectionString %>" SelectCommand="SELECT [AdminUserName], [AdminPassWord], [AdminEmail] FROM [AdminLogin]"></asp:SqlDataSource>
+         </div>
+         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LoginConnection %>" SelectCommand="SELECT * FROM [AdminLogin]"></asp:SqlDataSource>
          <br />
     </form>
 </body>

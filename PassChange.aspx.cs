@@ -10,10 +10,10 @@ using System.Web.UI.WebControls;
 
 namespace EagleLife
 {
-    
+
     public partial class PassWordChange : System.Web.UI.Page
     {
-        string strcon = ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString;
+        string strcon = ConfigurationManager.ConnectionStrings["LoginConnection"].ConnectionString;
         string str = null;
         SqlCommand com;
         byte up;
@@ -36,52 +36,47 @@ namespace EagleLife
         {
             SqlConnection connect = new SqlConnection(strcon);
             connect.Open();
-            str = "select * from AdminLogin";
+            str = "Select * from AdminLogin";
             com = new SqlCommand(str, connect);
             SqlDataReader reader = com.ExecuteReader();
 
-            
-            if (txtUser.Text == "")
+            if(txtUser.Text == "")
             {
                 lblIUser.Visible = true;
             }
             else
             {
-
                 reader.Close();
                 connect.Close();
-                
-                    if (txtNew.Text.Length >= 6 && txtConfirm.Text.Length >= 6)
+                    
+                if(txtNew.Text.Length >= 6 && txtConfirm.Text.Length >= 6)
+                {
+                    if(txtNew.Text == txtConfirm.Text)
                     {
-                        if (txtNew.Text == txtConfirm.Text)
-                        {
-
-                            connect.Open();
-                            str = "update AdminLogin set AdminPassWord =@AdminPassWord where AdminUserName='" + txtUser.Text + "'";
-                            com = new SqlCommand(str, connect);
-                            com.Parameters.Add(new SqlParameter("@AdminPassWord", SqlDbType.VarChar, 50));
-                            com.Parameters["@AdminPassWord"].Value = txtNew.Text;
-                            com.ExecuteNonQuery();
-                            connect.Close();
-                            lblChange.Visible = true;
-
-                        }
-
-                        else
-                        {
-                            lblMatch.Visible = true;
-                        }
-                    }
+                        connect.Open();
+                        str = "Update AdminLogin set AdminPassWord = @AdminPassWord where AdminUserName ='" + txtUser.Text + "'";
+                        com = new SqlCommand(str, connect);
+                        com.Parameters.Add(new SqlParameter("@AdminPassWord", SqlDbType.VarChar, 50));
+                        com.Parameters["@AdminPassWord"].Value = txtNew.Text;
+                        com.ExecuteNonQuery();
+                        connect.Close();
+                        lblChange.Visible = true;
+                            
+                     }
                     else
                     {
-                        lblLength.Visible = true;
+                        lblMatch.Visible = true;
                     }
-
+                }
+                else
+                {
+                    lblLength.Visible = true;
+                }
             }
         }
-
-       
     }
+
+}
 
       
-    }
+    

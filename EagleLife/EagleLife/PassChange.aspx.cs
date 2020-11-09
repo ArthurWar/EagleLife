@@ -20,15 +20,13 @@ namespace EagleLife
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblIUser.Visible = false;
             lblChange.Visible = false;
-            lblMatch.Visible = false;
-            lblLength.Visible = false;
+            lblError.Text = "";
         }
 
         protected void BtnCncl_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Login.aspx");
+            Response.Redirect("Default.aspx");
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "<Pending>")]
@@ -40,10 +38,16 @@ namespace EagleLife
             com = new SqlCommand(str, connect);
             SqlDataReader reader = com.ExecuteReader();
 
-            if (txtUser.Text == "")
+            if (txtUser.Text == "" || txtCurrent.Text == "")
             {
-                lblIUser.Visible = true;
+                lblError.Text = "Please enter a valid username and password.";
             }
+
+            else if(txtCurrent.Text == txtNew.Text || txtCurrent.Text == txtConfirm.Text)
+            {
+                lblError.Text = "New password cannot be same as current password.";
+            }
+
             else
             {
                 reader.Close();
@@ -65,15 +69,14 @@ namespace EagleLife
                     }
                     else
                     {
-                        lblMatch.Visible = true;
+                        lblError.Text = "New and Confirm Password must match.";
                     }
                 }
                 else
                 {
-                    lblLength.Visible = true;
+                    lblError.Text = "New password must be at least 6 characters long.";
                 }
             }
         }
     }
-
 }

@@ -22,7 +22,7 @@ namespace EagleLife
 
         protected void btnSwitchList_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Default.aspx");
+            Response.Redirect("~/Search.aspx");
         }
 
         protected void rdoSearchToggle_SelectedIndexChanged(object sender, EventArgs e)

@@ -91,7 +91,7 @@ namespace EagleLife
         }
        protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Login.aspx");
+            Response.Redirect("Default.aspx");
         }
 
         protected void btnVerify_Click(object sender, EventArgs e)

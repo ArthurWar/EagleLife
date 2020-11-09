@@ -36,7 +36,7 @@
                     <td class="auto-style5">
                         <asp:Label ID="Label2" runat="server" Text="Current Password:"></asp:Label></td>
                     <td class="auto-style5">
-        <asp:TextBox ID="txtCurrent" runat="server" AutoComplete="off"></asp:TextBox>
+        <asp:TextBox ID="txtCurrent" TextMode="Password" runat="server" AutoComplete="off"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -44,7 +44,7 @@
                         <asp:Label ID="Label4" runat="server" Text="New Password:"></asp:Label>
                     </td>
                     <td class="auto-style5">
-        <asp:TextBox ID="txtNew" runat="server" AutoComplete="off"></asp:TextBox>
+        <asp:TextBox ID="txtNew" TextMode="Password" runat="server" AutoComplete="off"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -52,18 +52,12 @@
                         <asp:Label ID="Label5" runat="server" Text="Confirm Password:"></asp:Label>
                     </td>
                     <td class="auto-style5">
-       <asp:TextBox ID="txtConfirm" runat="server"  AutoComplete="off"></asp:TextBox>
+       <asp:TextBox ID="txtConfirm" TextMode="Password" runat="server"  AutoComplete="off"></asp:TextBox>
                         </td>
                 </tr>
                 <tr>
                     <td>
-        <asp:Label ID="lblIUser" runat="server" Font-Size="Medium" ForeColor="Red" Text="Incorrect Username!"></asp:Label>
-                        <br />
-       <asp:Label ID="lblIPass" runat="server" Font-Size="Medium" ForeColor="Red" Text="Incorrect Password!"></asp:Label>
-                        <br />
-        <asp:Label ID="lblMatch" runat="server" Font-Size="Medium" ForeColor="Red" Text="New and Confirm Password must match!"></asp:Label>
-                        <br />
-        <asp:Label ID="lblLength" runat="server" Font-Size="Medium" ForeColor="Red" Text="New password must be at least 6 characters long."></asp:Label>
+        <asp:Label ID="lblError" runat="server" Font-Size="Medium" ForeColor="Red"></asp:Label>
                     </td>
                     <td>
         <asp:Label ID="lblChange" runat="server" Font-Size="Large" ForeColor="#00CC00" Text="Password Changed!"></asp:Label>
@@ -72,9 +66,8 @@
             </table>
             <br />
         <asp:Button ID="btnChange" runat="server" Text="Confirm" OnClick="btnChange_Click" />
-            <br />
-            <br />
-        <asp:Button ID="BtnCncl" runat="server" Text="Cancel" OnClick="BtnCncl_Click" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="BtnCncl" runat="server" Text="Back to Login" OnClick="BtnCncl_Click" />
         </div>
     </form>
 </body>

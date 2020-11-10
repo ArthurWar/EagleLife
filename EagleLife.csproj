@@ -232,6 +232,7 @@
       <BrowseToURL>~/PassChange.aspx</BrowseToURL>
     </Content>
     <Content Include="PassForgot.aspx" />
+    <Content Include="PassWordReset.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
     <Content Include="Initial.aspx" />
@@ -271,6 +272,13 @@
     </Compile>
     <Compile Include="PassForgot.aspx.designer.cs">
       <DependentUpon>PassForgot.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PassWordReset.aspx.cs">
+      <DependentUpon>PassWordReset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PassWordReset.aspx.designer.cs">
+      <DependentUpon>PassWordReset.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Default.aspx.cs">

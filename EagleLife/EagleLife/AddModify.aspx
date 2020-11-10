@@ -138,6 +138,7 @@
                     <asp:ListItem Selected="True">Add</asp:ListItem>
                     <asp:ListItem>Modify</asp:ListItem>
                 </asp:RadioButtonList>
+                        <asp:RadioButton ID="RadioButton1" runat="server" OnCheckedChanged="RadioButton1_CheckedChanged" Text="Delete" />
                 </tr>
             </table>
                 <br />

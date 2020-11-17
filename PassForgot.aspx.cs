@@ -21,7 +21,7 @@ namespace EagleLife
         SqlConnection strcon = new SqlConnection(ConfigurationManager.ConnectionStrings["LoginConnection"].ConnectionString);
         string server = null;
         SqlCommand com;
-        string randomcode;
+       static string randomcode;
         public static string to;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -34,9 +34,10 @@ namespace EagleLife
 
         }
 
-        protected void btnSend_Click1(object sender, EventArgs e)
+        protected void btnSend_Click(object sender, EventArgs e)
         {
             string mail = txtEmail.Text;
+           
             
             SqlDataAdapter adapt = new SqlDataAdapter("Select COUNT(*) FROM AdminLogin where AdminEmail='" + mail + "'", strcon);
             DataTable tab = new DataTable();
@@ -58,28 +59,29 @@ namespace EagleLife
                 {
                     if (reader.Read())
                     {
-                        using (SmtpClient smtp = new SmtpClient(server, 25))
-                        {
-                            string from, to, messagebody;
-                            from = "apmckee11@gmail.com";
-                            to = (txtEmail.Text).ToString();
-                            MailMessage mess = new MailMessage(from, to);
-                            messagebody = "Your Reset Code is " + randomcode;
-                            mess.To.Add(to);
-                            mess.From = new MailAddress(from);
-                            mess.Body = messagebody;
-                            mess.Subject = "Password reseting code!";
-                            mess.IsBodyHtml = true;
-                            smtp.Host = "smtp.gmail.com";
-                            smtp.UseDefaultCredentials = true;
-                            smtp.EnableSsl = true;
-                            smtp.Port = 465;
-                            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                            smtp.Credentials = new NetworkCredential("AMcKee", "YoungLife");
-                            smtp.Send(mess);
-                            lblSent.Visible = true;
-                        }
 
+                            var from = new MailAddress("EagleLifeCap2020@gmail.com");
+                            var to = new MailAddress(mail);
+                             MailMessage mess = new MailMessage(from, to);
+                            mess.Subject = "Password Reseting Code!";
+                            mess.Body = ("Your Reset Code is " + randomcode+"!" );
+
+                        SmtpClient smtp = new SmtpClient();
+
+                        NetworkCredential cred = new NetworkCredential();
+
+                        cred.UserName = from.User;
+                        cred.Password = "YoungLife";
+
+                        smtp.Credentials = cred;
+                        smtp.Port = 587;
+                        smtp.Host = "smtp.gmail.com";
+                        smtp.EnableSsl = true;
+
+
+                        smtp.Send(mess);
+                        lblSent.Visible = true;
+               
                     }
                     else
                     {
@@ -104,16 +106,54 @@ namespace EagleLife
 
         protected void btnVerify_Click(object sender, EventArgs e)
         {
-            if (randomcode == (txtCode.Text).ToString())
+            string text = txtEmail.Text;
+            string code = txtCode.Text;
+            SqlDataAdapter adapter = new SqlDataAdapter("Select Count(*) From AdminLogin where AdminEmail='" + text + "'", strcon);
+            DataTable dat = new DataTable();
+            adapter.Fill(dat);
+
+            strcon.Open();
+            string checkemail = "Select AdminEmail from AdminLogin where AdminEmail= '" + text + "'";
+
+            SqlCommand cmd = new SqlCommand(checkemail, strcon);
+
+            SqlDataReader read = cmd.ExecuteReader();
+            if (txtCode.Text != "")
             {
-                lblcode.Visible = true;
-                to = txtEmail.Text;
-                Response.Redirect("PassWordReset.aspx");
+                if (txtCode.Text.Length == 6)
+                {
+                    if (dat.Rows.Count >= 1)
+                    {
+                     
+                        if (randomcode == code)
+                        {
+                            lblcode.Visible = true;
+                            Response.Redirect("PassWordReset.aspx");
+                        }
+                        else
+                        {
+                            lblincode.Visible = true;
+
+                        }
+                    }
+                    else
+                    {
+                        lblincode.Visible = true;
+                    }
+                }
+                else
+                {
+                    lblincode.Visible = true;
+                }
+                
             }
+
             else
             {
                 lblincode.Visible = true;
             }
+            strcon.Close();
         }
+ 
     }
 }

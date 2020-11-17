@@ -22,6 +22,7 @@ namespace EagleLife
         string server = null;
         SqlCommand com;
        static string randomcode;
+       
         public static string to;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -60,11 +61,11 @@ namespace EagleLife
                     if (reader.Read())
                     {
 
-                            var from = new MailAddress("EagleLifeCap2020@gmail.com");
-                            var to = new MailAddress(mail);
-                             MailMessage mess = new MailMessage(from, to);
-                            mess.Subject = "Password Reseting Code!";
-                            mess.Body = ("Your Reset Code is " + randomcode+"!" );
+                        var from = new MailAddress("EagleLifeCap2020@gmail.com");
+                        var to = new MailAddress(mail);
+                        MailMessage mess = new MailMessage(from, to);
+                        mess.Subject = "Password Reseting Code!";
+                        mess.Body = ("Your Reset Code is " + randomcode+"!" );
 
                         SmtpClient smtp = new SmtpClient();
 
@@ -103,11 +104,24 @@ namespace EagleLife
         {
             Response.Redirect("Login.aspx");
         }
-
+        private static DateTime time = DateTime.MinValue;
+        private static string current = "0";
+        public string Currentnumber()
+        {
+            if(time < DateTime.Now)
+            {
+                time = DateTime.Now.AddMinutes(5);
+            }
+            return current;
+        }
         protected void btnVerify_Click(object sender, EventArgs e)
         {
+           
             string text = txtEmail.Text;
             string code = txtCode.Text;
+            DateTime dtnow = DateTime.Now;
+            DateTime dtExp = dtnow.AddMinutes(30);
+            
             SqlDataAdapter adapter = new SqlDataAdapter("Select Count(*) From AdminLogin where AdminEmail='" + text + "'", strcon);
             DataTable dat = new DataTable();
             adapter.Fill(dat);
@@ -124,9 +138,10 @@ namespace EagleLife
                 {
                     if (dat.Rows.Count >= 1)
                     {
-                     
+
                         if (randomcode == code)
                         {
+
                             lblcode.Visible = true;
                             Response.Redirect("PassWordReset.aspx");
                         }
@@ -154,6 +169,6 @@ namespace EagleLife
             }
             strcon.Close();
         }
- 
+
     }
 }

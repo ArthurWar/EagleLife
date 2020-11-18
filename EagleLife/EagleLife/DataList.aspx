@@ -11,6 +11,10 @@
         <div style="vertical-align:middle; text-align: center;">
             <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/title_small.png" />
             <br />
+            <br />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Return to search..." />
+            <br />
+            <br />
             <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="XX-Large" Font-Underline="True" Text="Student Database"></asp:Label>
             &nbsp;<br />
             <br />
@@ -64,7 +68,6 @@
             </div>
             </div>
             <br />
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Switch to Search View..." />
             <br />
             <asp:Label ID="lblSaveStatus" runat="server"></asp:Label>
             <asp:Label ID="lblFolderStatus" runat="server"></asp:Label>

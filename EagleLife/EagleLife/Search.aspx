@@ -65,21 +65,20 @@
                 </table>
             </div>
             <br />
-            <asp:Button ID="btnSwitchList" runat="server" OnClick="btnSwitchList_Click" Text="Switch to List View..." />
-        &nbsp;&nbsp;&nbsp; <asp:Button ID="btnSwitchAM" runat="server" OnClick="btnSwitchAM_Click" Text="Add/Modify Users..." />
+            <asp:Button ID="btnSwitchList" runat="server" OnClick="btnSwitchList_Click" Text="View users as a list..." />
+        &nbsp;&nbsp;&nbsp; <asp:Button ID="btnSwitchAM" runat="server" OnClick="btnSwitchAM_Click" Text="Add/Modify users..." />
             <br />
             <br />
 
 
 
             <div style="vertical-align:middle; text-align: center; width:100%;">
-            <table align="center" class="auto-style5">
+            <table align="center" class="auto-style7">
                 <tr>
                     <td class="auto-style6">ID:</td>
                     <td class="auto-style7"><asp:TextBox ID="txtUserID" runat="server" OnTextChanged="txtUserID_TextChanged"></asp:TextBox>
                     </td>
                     <td class="auto-style8">
-                        <br />
                 <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
                     </td>
                 </tr>
@@ -96,7 +95,6 @@
                     <td class="auto-style7"><asp:TextBox ID="txtUserSchool" runat="server" Enabled="False"></asp:TextBox>
                     </td>
                     <td class="auto-style8">
-            <asp:Image ID="Image1" runat="server" Height="128px" Width="128px" ImageUrl="~/Images/profile_nouser.png" />
             <asp:CheckBox ID="userHasGroup" runat="server" Visible="False" />
 
 
@@ -104,7 +102,7 @@
                     </td>
                 </tr>
             </table>
-            <table align="center" class="auto-style5">
+            <table align="center" class="auto-style7">
                 <tr>
                     <td class="auto-style6">Phone #: </td>
                     <td class="auto-style7"><asp:TextBox ID="txtUserPhone" runat="server" Enabled="False"></asp:TextBox>

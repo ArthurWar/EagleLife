@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
@@ -15,12 +16,13 @@ using System.Web.UI.WebControls;
 
 namespace EagleLife
 {
-   public partial class PassWordForgot : System.Web.UI.Page
+    public partial class PassWordForgot : System.Web.UI.Page
     {
-        string strcon = ConfigurationManager.ConnectionStrings["LoginConnection"].ConnectionString;
-        string str = null;
+        SqlConnection strcon = new SqlConnection(ConfigurationManager.ConnectionStrings["LoginConnection"].ConnectionString);
+        string server = null;
         SqlCommand com;
-        string randomcode;
+       static string randomcode;
+       
         public static string to;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,51 +34,54 @@ namespace EagleLife
 
         }
 
-        protected void btnSend_Click1(object sender, EventArgs e)
+        protected void btnSend_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(strcon);
-            conn.Open();
-            str = "Select * from AdminLogin";
-            com = new SqlCommand(str, conn);
-            SqlDataReader reader = com.ExecuteReader();
-            Regex emailregex = new Regex(@"[a-z0-9!#$%&'*+/=?^_{|}~]+(?:\.[a-z0-9!!#$%&'*+/=?)^_{|}~-]+)");
+            string mail = txtEmail.Text;
+           
+            
+            SqlDataAdapter adapt = new SqlDataAdapter("Select COUNT(*) FROM AdminLogin where AdminEmail='" + mail + "'", strcon);
+            DataTable tab = new DataTable();
+            adapt.Fill(tab);
 
-            if(txtEmail.Text == "")
+            strcon.Open();
+
+            string email = "Select AdminEmail FROM AdminLogin where AdminEmail='" + mail + "'";
+            SqlCommand comm = new SqlCommand(email, strcon);
+
+            SqlDataReader reader = comm.ExecuteReader();
+            Regex emailregex = new Regex(@"[a-z0-9!#$%&'*+/=?^_{|}~]+(?:\.[a-z0-9!!#$%&'*+/=?)^_{|}~-]+)");
+            Random rand = new Random();
+            randomcode = (rand.Next(999999)).ToString();
+
+            if (txtEmail.Text != "")
             {
-                lblMissing.Visible = true;
-            }
-            else
-            {
-                if (emailregex.IsMatch(txtEmail.Text))
+                if (emailregex.IsMatch(mail))
                 {
                     if (reader.Read())
                     {
-                        try
-                        {
-                            Session["AdminEmail"] = txtEmail.Text.Trim();
-                            Random rand = new Random();
-                            randomcode = (rand.Next(999999)).ToString();
-                            SmtpClient client = new SmtpClient();
-                            MailMessage mess = new MailMessage();
-                            client.UseDefaultCredentials = false;
-                            client.Credentials = new NetworkCredential("apmckee11@gmail.com", "YoungLife");
-                            client.Port = 587;
-                            client.EnableSsl = true;
-                            client.Host = "smtp.gmail.com";
-                            mess.To.Add(txtEmail.Text);
-                            mess.From = new MailAddress("apmckee11@gmail.com");
-                            mess.Body = randomcode;
-                            mess.Subject = "Password reseting code!";
-                            client.Send(mess);
-                            conn.Close();
-                            reader.Close();
-                            lblSent.Visible = true;
-                        }
-                        catch
-                        {
-                            Exception ex;
-                        }
-                       
+
+                        var from = new MailAddress("EagleLifeCap2020@gmail.com");
+                        var to = new MailAddress(mail);
+                        MailMessage mess = new MailMessage(from, to);
+                        mess.Subject = "Password Resetting Code!";
+                        mess.Body = ("Your Reset Code is: " + randomcode );
+
+                        SmtpClient smtp = new SmtpClient();
+
+                        NetworkCredential cred = new NetworkCredential();
+
+                        cred.UserName = from.User;
+                        cred.Password = "YoungLife";
+
+                        smtp.Credentials = cred;
+                        smtp.Port = 587;
+                        smtp.Host = "smtp.gmail.com";
+                        smtp.EnableSsl = true;
+
+
+                        smtp.Send(mess);
+                        lblSent.Visible = true;
+               
                     }
                     else
                     {
@@ -88,24 +93,77 @@ namespace EagleLife
                     lblWrong.Visible = true;
                 }
             }
-        }
-       protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Default.aspx");
+            else
+            {
+                lblMissing.Visible = true;
+            }
         }
 
+        private static DateTime time = DateTime.MinValue;
+        private static string current = "0";
+        public string Currentnumber()
+        {
+            if(time < DateTime.Now)
+            {
+                time = DateTime.Now.AddMinutes(5);
+            }
+            return current;
+        }
         protected void btnVerify_Click(object sender, EventArgs e)
         {
-            if(randomcode == (txtCode.Text).ToString())
+           
+            string text = txtEmail.Text;
+            string code = txtCode.Text;
+            DateTime dtnow = DateTime.Now;
+            DateTime dtExp = dtnow.AddMinutes(30);
+            
+            SqlDataAdapter adapter = new SqlDataAdapter("Select Count(*) From AdminLogin where AdminEmail='" + text + "'", strcon);
+            DataTable dat = new DataTable();
+            adapter.Fill(dat);
+
+            strcon.Open();
+            string checkemail = "Select AdminEmail from AdminLogin where AdminEmail= '" + text + "'";
+
+            SqlCommand cmd = new SqlCommand(checkemail, strcon);
+
+            SqlDataReader read = cmd.ExecuteReader();
+            if (txtCode.Text != "")
             {
-                lblcode.Visible = true;
-                to = txtEmail.Text;
-                Response.Redirect("PassChange.aspx");
+                if (txtCode.Text.Length == 6)
+                {
+                    if (dat.Rows.Count >= 1)
+                    {
+
+                        if (randomcode == code)
+                        {
+
+                            lblcode.Visible = true;
+                            Response.Redirect("PassWordReset.aspx");
+                        }
+                        else
+                        {
+                            lblincode.Visible = true;
+
+                        }
+                    }
+                    else
+                    {
+                        lblincode.Visible = true;
+                    }
+                }
+                else
+                {
+                    lblincode.Visible = true;
+                }
+                
             }
+
             else
             {
                 lblincode.Visible = true;
             }
+            strcon.Close();
         }
+
     }
 }

@@ -10,7 +10,7 @@
 namespace EagleLife {
     
     
-    public partial class AddModify {
+    public partial class PassWordReset {
         
         /// <summary>
         /// form1 control.
@@ -22,13 +22,13 @@ namespace EagleLife {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Image2 control.
+        /// Image1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image2;
+        protected global::System.Web.UI.WebControls.Image Image1;
         
         /// <summary>
         /// Label1 control.
@@ -40,138 +40,120 @@ namespace EagleLife {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// rdoSearchToggle control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rdoSearchToggle;
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// lblRanges control.
+        /// txtUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRanges;
+        protected global::System.Web.UI.WebControls.TextBox txtUser;
         
         /// <summary>
-        /// btnSwitchList control.
+        /// Label4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSwitchList;
+        protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// txtUserID control.
+        /// txtNew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUserID;
+        protected global::System.Web.UI.WebControls.TextBox txtNew;
         
         /// <summary>
-        /// btnSearch control.
+        /// Label5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
-        /// txtUserName control.
+        /// txtConfirm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUserName;
+        protected global::System.Web.UI.WebControls.TextBox txtConfirm;
         
         /// <summary>
-        /// txtUserEmail control.
+        /// btnReset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUserEmail;
+        protected global::System.Web.UI.WebControls.Button btnReset;
         
         /// <summary>
-        /// txtUserSchool control.
+        /// lblSuccess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUserSchool;
+        protected global::System.Web.UI.WebControls.Label lblSuccess;
         
         /// <summary>
-        /// txtUserGroup control.
+        /// lblIncorrect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUserGroup;
+        protected global::System.Web.UI.WebControls.Label lblIncorrect;
         
         /// <summary>
-        /// txtUserPhone control.
+        /// lblEmpty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUserPhone;
+        protected global::System.Web.UI.WebControls.Label lblEmpty;
         
         /// <summary>
-        /// txtDivision control.
+        /// lblMatch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDivision;
+        protected global::System.Web.UI.WebControls.Label lblMatch;
         
         /// <summary>
-        /// lblSystemMessage control.
+        /// lblLength control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSystemMessage;
+        protected global::System.Web.UI.WebControls.Label lblLength;
         
         /// <summary>
-        /// rdoAddModify control.
+        /// LinkButton1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rdoAddModify;
-        
-        /// <summary>
-        /// btnConfirm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConfirm;
-        
-        /// <summary>
-        /// btnDelete control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDelete;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
     }
 }

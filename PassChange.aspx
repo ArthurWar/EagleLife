@@ -13,14 +13,6 @@
         .auto-style5 {
             width: 194px;
         }
-        .auto-style6 {
-            width: 194px;
-            height: 54px;
-        }
-        .auto-style7 {
-            width: 194px;
-            height: 75px;
-        }
         </style>
 </head>
 <body>
@@ -34,16 +26,17 @@
             <br />
        <table align="center" width="30%" class="auto-style4" >
                 <tr>
-                    <td class="auto-style7">
-                        <asp:Label ID="Label3" runat="server" Text="Username:"></asp:Label>
-                        <br />
-                        <br />
-                        Password:</td>
-                    <td class="auto-style7">
+                    <td class="auto-style5">
+                        <asp:Label ID="Label3" runat="server" Text="Username:"></asp:Label></td>
+                    <td class="auto-style5">
         <asp:TextBox ID="txtUser" runat="server" AutoComplete="off"></asp:TextBox>
-                        <br />
-                        <br />
-                        <asp:TextBox ID="txtpass" AutoComplete="off" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style5">
+                        <asp:Label ID="Label2" runat="server" Text="Current Password:"></asp:Label></td>
+                    <td class="auto-style5">
+        <asp:TextBox ID="txtCurrent" TextMode="Password" runat="server" AutoComplete="off"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -51,35 +44,30 @@
                         <asp:Label ID="Label4" runat="server" Text="New Password:"></asp:Label>
                     </td>
                     <td class="auto-style5">
-        <asp:TextBox ID="txtNew" runat="server" AutoComplete="off"></asp:TextBox>
+        <asp:TextBox ID="txtNew" TextMode="Password" runat="server" AutoComplete="off"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
-                    <td class="auto-style6">
+                    <td class="auto-style5">
                         <asp:Label ID="Label5" runat="server" Text="Confirm Password:"></asp:Label>
                     </td>
-                    <td class="auto-style6">
-       <asp:TextBox ID="txtConfirm" runat="server"  AutoComplete="off"></asp:TextBox>
+                    <td class="auto-style5">
+       <asp:TextBox ID="txtConfirm" TextMode="Password" runat="server"  AutoComplete="off"></asp:TextBox>
                         </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Label ID="lblMiss" runat="server" ForeColor="Red" Text="Please fill out the Username and Password!"></asp:Label>
-                        <br />
-                        <asp:Label ID="lblUserPass" runat="server" ForeColor="Red" Text="Incorrect User Credentials!"></asp:Label>
-                        <br />
-        <asp:Label ID="lblMatch" runat="server" Font-Size="Medium" ForeColor="Red" Text="New and Confirm Password must match!"></asp:Label>
-                        <br />
-        <asp:Label ID="lblLength" runat="server" Font-Size="Medium" ForeColor="Red" Text="New password must be at least six characters long."></asp:Label>
+        <asp:Label ID="lblError" runat="server" Font-Size="Medium" ForeColor="Red"></asp:Label>
                     </td>
                     <td>
         <asp:Label ID="lblChange" runat="server" Font-Size="Large" ForeColor="#00CC00" Text="Password Changed!"></asp:Label>
                         </td>
                 </tr>
             </table>
+            <br />
         <asp:Button ID="btnChange" runat="server" Text="Confirm" OnClick="btnChange_Click" />
-            &nbsp;&nbsp;
-        <asp:Button ID="BtnCncl" runat="server" Text="Go Back!" OnClick="BtnCncl_Click" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="BtnCncl" runat="server" Text="Back to Login" OnClick="BtnCncl_Click" />
         </div>
     </form>
 </body>

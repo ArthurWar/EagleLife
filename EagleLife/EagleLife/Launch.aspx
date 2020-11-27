@@ -16,6 +16,11 @@
             Version 1.0.0<br />
             <br />
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Go to Application" />
+            <br />
+            <br />
+            <hr />
+            Created in association with<br />
+            <asp:Image ID="Image3" runat="server" Height="25%" ImageUrl="~/Images/YL-Altrnt-Hrzntl-White.png" Width="25%" />
         </div>
     </form>
 </body>

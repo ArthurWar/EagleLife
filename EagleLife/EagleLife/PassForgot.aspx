@@ -36,6 +36,10 @@
             <asp:Label ID="lblMissing" runat="server" ForeColor="Red" Text="Please Fill in the email Address box."></asp:Label>
             <br />
             <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Back to Login</asp:LinkButton>
+            <br />
+            <hr />
+            Created in association with<br />
+            <asp:Image ID="Image3" runat="server" Height="25%" ImageUrl="~/Images/YL-Altrnt-Hrzntl-White.png" Width="25%" />
             </div>
     </form>
 </body>

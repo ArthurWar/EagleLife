@@ -146,7 +146,9 @@
                 <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
                 <br />
                 <br />
-                <br />
+                <hr />
+                Created in association with<br />
+                <asp:Image ID="Image3" runat="server" Height="25%" ImageUrl="~/Images/YL-Altrnt-Hrzntl-White.png" Width="25%" />
                 <br />
             </div>
 

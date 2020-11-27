@@ -68,6 +68,10 @@
         <asp:Button ID="btnChange" runat="server" Text="Confirm" OnClick="btnChange_Click" />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="BtnCncl" runat="server" Text="Back to Login" OnClick="BtnCncl_Click" />
+            <br />
+            <hr />
+            Created in association with<br />
+            <asp:Image ID="Image3" runat="server" Height="25%" ImageUrl="~/Images/YL-Altrnt-Hrzntl-White.png" Width="25%" />
         </div>
     </form>
 </body>

@@ -70,6 +70,10 @@
                     </td>
                 </tr>
             </table>
+             <br />
+             <hr />
+             Created in association with<br />
+             <asp:Image ID="Image3" runat="server" Height="25%" ImageUrl="~/Images/YL-Altrnt-Hrzntl-White.png" Width="25%" />
          </div>
          <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LoginConnection %>" SelectCommand="SELECT * FROM [AdminLogin]"></asp:SqlDataSource>
          <br />

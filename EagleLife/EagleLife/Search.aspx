@@ -136,6 +136,10 @@
                 <br />
                         <asp:LinkButton ID="Changelink" runat="server" OnClick="ChangeLink_Click">Need to Change Password ?</asp:LinkButton>
                 <br />
+                <hr />
+                Created in association with<br />
+                <asp:Image ID="Image3" runat="server" Height="25%" ImageUrl="~/Images/YL-Altrnt-Hrzntl-White.png" Width="25%" />
+                <br />
             </div>
             <br />
         &nbsp;</div>

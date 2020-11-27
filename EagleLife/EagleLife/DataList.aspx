@@ -72,6 +72,11 @@
             <asp:Label ID="lblSaveStatus" runat="server"></asp:Label>
             <asp:Label ID="lblFolderStatus" runat="server"></asp:Label>
                 <br />
+            <br />
+            <hr />
+            Created in association with<br />
+            <asp:Image ID="Image3" runat="server" Height="25%" ImageUrl="~/Images/YL-Altrnt-Hrzntl-White.png" Width="25%" />
+                <br />
                 <br />
         </div>
     </form>

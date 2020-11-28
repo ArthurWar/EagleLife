@@ -11,7 +11,7 @@ namespace EagleLife
 {
 
 
-    public partial class PassWordChange
+    public partial class PassWordReset
     {
 
         /// <summary>
@@ -60,15 +60,6 @@ namespace EagleLife
         protected global::System.Web.UI.WebControls.TextBox txtUser;
 
         /// <summary>
-        /// txtpass control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtpass;
-
-        /// <summary>
         /// Label4 control.
         /// </summary>
         /// <remarks>
@@ -105,22 +96,40 @@ namespace EagleLife
         protected global::System.Web.UI.WebControls.TextBox txtConfirm;
 
         /// <summary>
-        /// lblMiss control.
+        /// btnReset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMiss;
+        protected global::System.Web.UI.WebControls.Button btnReset;
 
         /// <summary>
-        /// lblUserPass control.
+        /// lblIncorrect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUserPass;
+        protected global::System.Web.UI.WebControls.Label lblIncorrect;
+
+        /// <summary>
+        /// lblEmpty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmpty;
+
+        /// <summary>
+        /// lblSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuccess;
 
         /// <summary>
         /// lblMatch control.
@@ -141,30 +150,12 @@ namespace EagleLife
         protected global::System.Web.UI.WebControls.Label lblLength;
 
         /// <summary>
-        /// lblChange control.
+        /// LinkButton1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblChange;
-
-        /// <summary>
-        /// btnChange control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnChange;
-
-        /// <summary>
-        /// BtnCncl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnCncl;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
     }
 }

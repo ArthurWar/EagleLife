@@ -13,87 +13,89 @@ namespace EagleLife
 
     public partial class PassWordChange : System.Web.UI.Page
     {
-        SqlConnection strcon = new SqlConnection(ConfigurationManager.ConnectionStrings["LoginConnection"].ConnectionString);
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["LoginConnection"].ConnectionString);
         string str = null;
-        SqlCommand com;
-        byte up;
-
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblMiss.Visible = false;
+            lblUserPass.Visible = false;
             lblChange.Visible = false;
-            lblError.Text = "";
+            lblMatch.Visible = false;
+            lblLength.Visible = false;
         }
 
         protected void BtnCncl_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect("Login.aspx");
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "<Pending>")]
         protected void btnChange_Click(object sender, EventArgs e)
         {
-            string pass = txtCurrent.Text;
-            string user = txtUser.Text;
+            string use = txtUser.Text;
+            string pass = txtpass.Text;
 
-            SqlDataAdapter asdf = new SqlDataAdapter("Select COUNT(*) from AdminLogin where AdminUsername='" + user + "'AND  AdminPassword ='" + pass + "'", strcon);
+            SqlDataAdapter asdf = new SqlDataAdapter("Select COUNT(*) FROM AdminLogin where AdminUserName='" + use +"' AND AdminPassWord= '" + pass +"'", con);
             DataTable dt = new DataTable();
             asdf.Fill(dt);
 
-            strcon.Open();
-           string str = "Select AdminUserName, AdminpassWord from AdminLogin where AdminUserName = '"+user+"'AND AdminPassWord='"+pass+"'";
-           SqlCommand com = new SqlCommand(str, strcon);
-           SqlDataReader reader = com.ExecuteReader();
+            con.Open();
+            string checkup = "Select AdminUserName, AdminPassWord  From AdminLogin where AdminUserName = '" + use + "' AND AdminPassWord ='" + pass + "' ";
+
+            SqlCommand command = new SqlCommand(checkup, con);
+
+            SqlDataReader read = command.ExecuteReader();
+
             if (dt.Rows.Count >= 1)
-            {
-                if (txtUser.Text == "" || txtCurrent.Text == "")
-                {
-                    lblError.Text = "Please make sure both the username and password are filled out.";
-                }
-
-                else if (txtCurrent.Text == txtNew.Text || txtCurrent.Text == txtConfirm.Text)
-                {
-                    lblError.Text = "New password cannot be same as current password.";
-                }
-
-                else
-                {                  
-                    if (txtNew.Text.Length >= 6 && txtConfirm.Text.Length >= 6)
+            {            
+                    if (txtUser.Text != "" && txtpass.Text != "")
                     {
-                        if (txtNew.Text == txtConfirm.Text)
+                        if (txtNew.Text.Length >= 6 && txtConfirm.Text.Length >= 6)
                         {
-                            if (reader.Read())
+                            if (txtNew.Text == txtConfirm.Text)
                             {
-                                strcon.Close();
-                                strcon.Open();
-                                str = "Update AdminLogin set AdminPassWord = @AdminPassWord where AdminUserName ='" + txtUser.Text + "'";
-                                com = new SqlCommand(str, strcon);
-                                com.Parameters.Add(new SqlParameter("@AdminPassWord", SqlDbType.VarChar, 50));
-                                com.Parameters["@AdminPassWord"].Value = txtNew.Text;
-                                com.ExecuteNonQuery();
-                                strcon.Close();
-                                lblChange.Visible = true;
+                                if (read.Read())
+                                {
+                                    con.Close();
+                                    con.Open();
+                                    str = "update AdminLogin set AdminPassWord =@AdminPassWord where AdminUserName='" + txtUser.Text + "'";
+                                    command = new SqlCommand(str, con);
+                                    command.Parameters.Add(new SqlParameter("@AdminPassWord", SqlDbType.VarChar, 50));
+                                    command.Parameters["@AdminPassWord"].Value = txtNew.Text;
+                                    command.ExecuteNonQuery();
+                                    con.Close();
+                                    lblChange.Visible = true;
+                                }
+                                else
+                                {
+                                    lblUserPass.Visible = true;
+                                }
+
                             }
-                            
-                            else 
+                            else
                             {
-                                lblError.Text = "Invalid username or Password.";
-                                    }
+                                lblMatch.Visible = true;
+                            }
                         }
                         else
                         {
-                            lblError.Text = "New and Confirm Password must match.";
+                            lblLength.Visible = true;
                         }
                     }
                     else
                     {
-                        lblError.Text = "New password must be at least 6 characters long.";
+                        lblMiss.Visible = true;
                     }
-                }
+
             }
             else
             {
-                lblError.Text = "Please enter a valid username and password.";
+                lblUserPass.Visible = true;
             }
         }
     }
+
 }
+
+      
+    

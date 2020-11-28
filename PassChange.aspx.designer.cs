@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EagleLife
-{
-
-
-    public partial class PassWordChange
-    {
-
+namespace EagleLife {
+    
+    
+    public partial class PassWordChange {
+        
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        
         /// <summary>
         /// Image1 control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Image1;
-
+        
         /// <summary>
         /// Label1 control.
         /// </summary>
@@ -40,7 +38,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-
+        
         /// <summary>
         /// Label3 control.
         /// </summary>
@@ -49,7 +47,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
-
+        
         /// <summary>
         /// txtUser control.
         /// </summary>
@@ -58,16 +56,25 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUser;
-
+        
         /// <summary>
-        /// txtpass control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtpass;
-
+        protected global::System.Web.UI.WebControls.Label Label2;
+        
+        /// <summary>
+        /// txtCurrent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCurrent;
+        
         /// <summary>
         /// Label4 control.
         /// </summary>
@@ -76,7 +83,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label4;
-
+        
         /// <summary>
         /// txtNew control.
         /// </summary>
@@ -85,7 +92,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNew;
-
+        
         /// <summary>
         /// Label5 control.
         /// </summary>
@@ -94,7 +101,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label5;
-
+        
         /// <summary>
         /// txtConfirm control.
         /// </summary>
@@ -103,43 +110,16 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtConfirm;
-
+        
         /// <summary>
-        /// lblMiss control.
+        /// lblError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMiss;
-
-        /// <summary>
-        /// lblUserPass control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUserPass;
-
-        /// <summary>
-        /// lblMatch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMatch;
-
-        /// <summary>
-        /// lblLength control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLength;
-
+        protected global::System.Web.UI.WebControls.Label lblError;
+        
         /// <summary>
         /// lblChange control.
         /// </summary>
@@ -148,7 +128,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblChange;
-
+        
         /// <summary>
         /// btnChange control.
         /// </summary>
@@ -157,7 +137,7 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnChange;
-
+        
         /// <summary>
         /// BtnCncl control.
         /// </summary>
@@ -166,5 +146,14 @@ namespace EagleLife
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnCncl;
+        
+        /// <summary>
+        /// Image3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Image3;
     }
 }

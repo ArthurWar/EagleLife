@@ -26,7 +26,6 @@ namespace EagleLife
         public static string to;
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblFail.Visible = false;
             lblSent.Visible = false;
             lblWrong.Visible = false;
             lblincode.Visible = false;
@@ -35,7 +34,7 @@ namespace EagleLife
 
         }
 
-        protected void btnSend_Click(object sender, EventArgs e)
+        protected void btnSend_Click1(object sender, EventArgs e)
         {
             string mail = txtEmail.Text;
            
@@ -64,8 +63,8 @@ namespace EagleLife
                         var from = new MailAddress("EagleLifeCap2020@gmail.com");
                         var to = new MailAddress(mail);
                         MailMessage mess = new MailMessage(from, to);
-                        mess.Subject = "Password Reseting Code!";
-                        mess.Body = ("Your Reset Code is " + randomcode+"!" );
+                        mess.Subject = "Password Resetting Code!";
+                        mess.Body = ("Your Reset Code is: " + randomcode );
 
                         SmtpClient smtp = new SmtpClient();
 
@@ -100,10 +99,6 @@ namespace EagleLife
             }
         }
 
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Login.aspx");
-        }
         private static DateTime time = DateTime.MinValue;
         private static string current = "0";
         public string Currentnumber()
@@ -143,7 +138,7 @@ namespace EagleLife
                         {
 
                             lblcode.Visible = true;
-                            Response.Redirect("PassWordReset.aspx");
+                            Response.Redirect("PassReset.aspx");
                         }
                         else
                         {
@@ -170,5 +165,9 @@ namespace EagleLife
             strcon.Close();
         }
 
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+        }
     }
 }

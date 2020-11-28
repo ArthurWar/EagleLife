@@ -13,89 +13,70 @@ namespace EagleLife
 
     public partial class PassWordChange : System.Web.UI.Page
     {
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["LoginConnection"].ConnectionString);
+        string strcon = ConfigurationManager.ConnectionStrings["LoginConnection"].ConnectionString;
         string str = null;
+        SqlCommand com;
+        byte up;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblMiss.Visible = false;
-            lblUserPass.Visible = false;
             lblChange.Visible = false;
-            lblMatch.Visible = false;
-            lblLength.Visible = false;
+            lblError.Text = "";
         }
 
         protected void BtnCncl_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Login.aspx");
+            Response.Redirect("Default.aspx");
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0044:Add readonly modifier", Justification = "<Pending>")]
         protected void btnChange_Click(object sender, EventArgs e)
         {
-            string use = txtUser.Text;
-            string pass = txtpass.Text;
+            SqlConnection connect = new SqlConnection(strcon);
+            connect.Open();
+            str = "Select * from AdminLogin";
+            com = new SqlCommand(str, connect);
+            SqlDataReader reader = com.ExecuteReader();
 
-            SqlDataAdapter asdf = new SqlDataAdapter("Select COUNT(*) FROM AdminLogin where AdminUserName='" + use +"' AND AdminPassWord= '" + pass +"'", con);
-            DataTable dt = new DataTable();
-            asdf.Fill(dt);
+            if (txtUser.Text == "" || txtCurrent.Text == "")
+            {
+                lblError.Text = "Please enter a valid username and password.";
+            }
 
-            con.Open();
-            string checkup = "Select AdminUserName, AdminPassWord  From AdminLogin where AdminUserName = '" + use + "' AND AdminPassWord ='" + pass + "' ";
+            else if(txtCurrent.Text == txtNew.Text || txtCurrent.Text == txtConfirm.Text)
+            {
+                lblError.Text = "New password cannot be same as current password.";
+            }
 
-            SqlCommand command = new SqlCommand(checkup, con);
+            else
+            {
+                reader.Close();
+                connect.Close();
 
-            SqlDataReader read = command.ExecuteReader();
-
-            if (dt.Rows.Count >= 1)
-            {            
-                    if (txtUser.Text != "" && txtpass.Text != "")
+                if (txtNew.Text.Length >= 6 && txtConfirm.Text.Length >= 6)
+                {
+                    if (txtNew.Text == txtConfirm.Text)
                     {
-                        if (txtNew.Text.Length >= 6 && txtConfirm.Text.Length >= 6)
-                        {
-                            if (txtNew.Text == txtConfirm.Text)
-                            {
-                                if (read.Read())
-                                {
-                                    con.Close();
-                                    con.Open();
-                                    str = "update AdminLogin set AdminPassWord =@AdminPassWord where AdminUserName='" + txtUser.Text + "'";
-                                    command = new SqlCommand(str, con);
-                                    command.Parameters.Add(new SqlParameter("@AdminPassWord", SqlDbType.VarChar, 50));
-                                    command.Parameters["@AdminPassWord"].Value = txtNew.Text;
-                                    command.ExecuteNonQuery();
-                                    con.Close();
-                                    lblChange.Visible = true;
-                                }
-                                else
-                                {
-                                    lblUserPass.Visible = true;
-                                }
+                        connect.Open();
+                        str = "Update AdminLogin set AdminPassWord = @AdminPassWord where AdminUserName ='" + txtUser.Text + "'";
+                        com = new SqlCommand(str, connect);
+                        com.Parameters.Add(new SqlParameter("@AdminPassWord", SqlDbType.VarChar, 50));
+                        com.Parameters["@AdminPassWord"].Value = txtNew.Text;
+                        com.ExecuteNonQuery();
+                        connect.Close();
+                        lblChange.Visible = true;
 
-                            }
-                            else
-                            {
-                                lblMatch.Visible = true;
-                            }
-                        }
-                        else
-                        {
-                            lblLength.Visible = true;
-                        }
                     }
                     else
                     {
-                        lblMiss.Visible = true;
+                        lblError.Text = "New and Confirm Password must match.";
                     }
-
-            }
-            else
-            {
-                lblUserPass.Visible = true;
+                }
+                else
+                {
+                    lblError.Text = "New password must be at least 6 characters long.";
+                }
             }
         }
     }
-
 }
-
-      
-    

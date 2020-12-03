@@ -34,7 +34,7 @@ namespace EagleLife
 
         }
 
-        protected void btnSend_Click(object sender, EventArgs e)
+        protected void btnSend_Click1(object sender, EventArgs e)
         {
             string mail = txtEmail.Text;
            
@@ -138,7 +138,7 @@ namespace EagleLife
                         {
 
                             lblcode.Visible = true;
-                            Response.Redirect("PassWordReset.aspx");
+                            Response.Redirect("PassReset.aspx");
                         }
                         else
                         {
@@ -165,5 +165,9 @@ namespace EagleLife
             strcon.Close();
         }
 
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+        }
     }
 }

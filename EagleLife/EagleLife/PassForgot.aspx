@@ -33,7 +33,7 @@
             <br />
             <asp:Label ID="lblincode" runat="server" ForeColor="Red" Text="Code is Incorrect!"></asp:Label>
             &nbsp;<asp:Label ID="lblWrong" runat="server" ForeColor="Red" Text="This email address does not match our records or cannot be found. "></asp:Label>
-            <asp:Label ID="lblMissing" runat="server" ForeColor="Red" Text="Please Fill in the email Address box."></asp:Label>
+            <asp:Label ID="lblMissing" runat="server" ForeColor="Red" Text="Please Fill in the Email Address box."></asp:Label>
             <br />
             <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Back to Login</asp:LinkButton>
             <br />

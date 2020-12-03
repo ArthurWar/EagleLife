@@ -90,7 +90,7 @@ namespace EagleLife
                 {
                     string connStr = ConfigurationManager.ConnectionStrings["EagleLifeDBConnectionString"].ConnectionString;
                     SqlConnection conn = new SqlConnection(connStr);
-                    string SQLStr = "Select StID, StName, StPhone, StEmail, StSchool, StHasGroup, StGroupCode From Student Where StID = @StID";
+                    string SQLStr = "Select StID, StName, StPhone, StEmail, StSchool, StGroupCode From Student Where StID = @StID";
                     SqlCommand comm = new SqlCommand(SQLStr, conn);
                     comm.Parameters.AddWithValue("StID", txtUserID.Text);
                     try
